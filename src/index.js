@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { PlacesView } from './PlacesView'
-import { PlaceView } from './PlaceView'
-import { App } from './App';
-import { NotFoundView } from './NotFoundView';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import {PlacesView} from './PlacesView'
+import {PlaceView} from './PlaceView'
+import {App} from './App';
+import {NotFoundView} from './NotFoundView';
 import './index.css';
 
 
@@ -15,13 +15,14 @@ import 'bootstrap/dist/css/bootstrap-theme.css'
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path="/" component={App} />
+    <Route path="/" component={App}>
 
-  <Route path="/places" component={PlacesView}>
-    <Route path="/places/:placeId" component={PlaceView}/>
-  </Route>
+      <Route path="/places" component={PlacesView}>
+        <Route path="/places/:placeId" component={PlaceView}/>
+      </Route>
 
-    <Route path="*" component={NotFoundView} />
+      <Route path="*" component={NotFoundView}/>
+    </Route>
   </Router>,
   document.getElementById('root')
 )
