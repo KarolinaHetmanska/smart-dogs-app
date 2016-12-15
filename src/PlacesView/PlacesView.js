@@ -1,5 +1,5 @@
 import React from 'react'
-import {places} from '../data'
+import { places } from '../data'
 
 export default (props)  =>
 <div>
