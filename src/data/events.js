@@ -53,7 +53,7 @@ export default [
     hour: 20,
     duration: 105,
     price: 90,
-    description: 'osé González uchodzi za skromnego, a jednocześnie pełnego twórczej pasji artystę. W swojej twórczości oddaje hołd takim twórcom jak Nina Simone, Chet Baker, Nick Drake, Caetano Veloso czy Cat Power. Ma krystalicznie czysty głos, śpiewa melancholijne melodie, a głębokie akordy jego gitary brzmią jak u argentyńskich mistrzów. Nie bez powodu uważany jest za jednego z największych talentów muzycznych XXI wieku.'
+    description: 'José González uchodzi za skromnego, a jednocześnie pełnego twórczej pasji artystę. W swojej twórczości oddaje hołd takim twórcom jak Nina Simone, Chet Baker, Nick Drake, Caetano Veloso czy Cat Power. Ma krystalicznie czysty głos, śpiewa melancholijne melodie, a głębokie akordy jego gitary brzmią jak u argentyńskich mistrzów. Nie bez powodu uważany jest za jednego z największych talentów muzycznych XXI wieku.'
     },
   {
     id: 6,

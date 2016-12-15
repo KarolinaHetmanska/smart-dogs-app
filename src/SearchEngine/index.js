@@ -1,3 +1,1 @@
-/**
- * Created by jtuscher on 15.12.16.
- */
+export { default as SearchEngine } from './SearchEngine'
