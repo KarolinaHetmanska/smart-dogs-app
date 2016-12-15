@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router'
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem,
+  Grid,
+  Row,
+  Col
+} from 'react-bootstrap'
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+export default (props) => (
+  <Grid>
+    <Navbar collapseOnSelect fixedTop>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <Link to="/">wmiasto</Link>
+        </Navbar.Brand>
 
-export default App;
+        <Navbar.Toggle />
+      </Navbar.Header>
+
+      <Navbar.Collapse>
+        <Nav>
+          <LinkContainer to="/places">
+            <NavItem eventKey={1} href="#">Places</NavItem>
+          </LinkContainer>
+
+          <LinkContainer to="/events">
+            <NavItem eventKey={2} href="#">Events</NavItem>
+          </LinkContainer>
+
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    <Row>
+      <Col md={12}>
+        {props.children}
+      </Col>
+    </Row>
+
+  </Grid>
+)

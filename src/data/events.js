@@ -46,14 +46,14 @@ export default [
   },
   {
     id: 5,
-    name: 'Jose Gonzale ',
+    name: 'Jose Gonzales',
     image: 'url',
     date: '2017-02-01',
     category: 'koncert',
     hour: 20,
     duration: 105,
     price: 90,
-    description: 'osé González uchodzi za skromnego, a jednocześnie pełnego twórczej pasji artystę. W swojej twórczości oddaje hołd takim twórcom jak Nina Simone, Chet Baker, Nick Drake, Caetano Veloso czy Cat Power. Ma krystalicznie czysty głos, śpiewa melancholijne melodie, a głębokie akordy jego gitary brzmią jak u argentyńskich mistrzów. Nie bez powodu uważany jest za jednego z największych talentów muzycznych XXI wieku.' ,
+    description: 'osé González uchodzi za skromnego, a jednocześnie pełnego twórczej pasji artystę. W swojej twórczości oddaje hołd takim twórcom jak Nina Simone, Chet Baker, Nick Drake, Caetano Veloso czy Cat Power. Ma krystalicznie czysty głos, śpiewa melancholijne melodie, a głębokie akordy jego gitary brzmią jak u argentyńskich mistrzów. Nie bez powodu uważany jest za jednego z największych talentów muzycznych XXI wieku.'
     },
   {
     id: 6,
@@ -251,7 +251,7 @@ export default [
     hour: 19,
     duration: 90,
     price: 100,
-    description: 'Producenci i twórcy projektu Queen Symfonicznie zapraszają na wyjątkowy koncert w Filharmonii Bałtyckiej - 1 kwietnia 2017! 'Gwiezdne Wojny Koncertowo' to multimedialne show w wykonaniu Hollyłódzkiej Orkiestry Filmowej i orkiestry Alla Vienna, pod dyrekcją Adama Klocka. Wzbogacone o niezwykłe wizualizacje i znakomitą grę świateł.'
+    description: 'Producenci i twórcy projektu Queen Symfonicznie zapraszają na wyjątkowy koncert w Filharmonii Bałtyckiej - 1 kwietnia 2017! "Gwiezdne Wojny Koncertowo" to multimedialne show w wykonaniu Hollyłódzkiej Orkiestry Filmowej i orkiestry Alla Vienna, pod dyrekcją Adama Klocka. Wzbogacone o niezwykłe wizualizacje i znakomitą grę świateł.'
   },
   {
     id: 24,
