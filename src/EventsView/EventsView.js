@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { events } from '../data'
 
 export default (props)  =>
@@ -8,7 +9,9 @@ export default (props)  =>
       {
         events.map(event =>
           <div key={event.id}>
-            {event.name} {event.image}
+            <Link to={'/events/' + event.id}>
+              {event.name}
+            </Link>
           </div>
         )
       }
