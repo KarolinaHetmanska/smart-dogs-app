@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router'
+
 import {
   Navbar,
   Nav,
@@ -38,6 +39,7 @@ export default (props) => (
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+
     <Row>
       <Col md={12}>
         {props.children}
