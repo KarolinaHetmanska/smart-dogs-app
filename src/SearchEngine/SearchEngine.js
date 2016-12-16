@@ -8,8 +8,30 @@ export default class SearchEngine extends React.Component {
   constructor() {
     super()
 
+    this.handleSubmit = (event) => {
+      event.preventDefault()
+      if (this.state.search === '') {
+        return
+      }
+      this.setState({
+        found: events.filter(
+          event => (
+            event.name.includes(this.state.search) ||
+            event.category.includes(this.state.search) ||
+            event.description.includes(this.state.search)
+          )
+        ).map(
+          event =>
+            <li key={event.id}>
+              {event.name} {event.description}
+            </li>
+        )
+      })
+    }
+
     this.state = {
-      search: ''
+      search: '',
+      found: []
     }
   }
 
@@ -19,7 +41,7 @@ export default class SearchEngine extends React.Component {
       <div>
         <Col xs={6} xsOffset={3}>
           <h1>SearchEngine</h1>
-          <form onSubmit={event => event.preventDefault()}>
+          <form onSubmit={this.handleSubmit}>
             <FormGroup
               controlId="formBasicText">
               <FormControl
@@ -38,14 +60,7 @@ export default class SearchEngine extends React.Component {
           <h4>{this.state.search}</h4>
           <ul>
             {
-              events.filter(
-                event => event.name === this.state.search || event.category === this.state.search || event.price === this.state.search
-              ).map(
-                event =>
-                  <li key={event.id}>
-                    {event.name} {event.description}
-                  </li>
-              )
+              this.state.found
             }
           </ul>
 
