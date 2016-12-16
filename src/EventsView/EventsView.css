@@ -1,0 +1,11 @@
+.eventSquare {
+   height: 130px;
+  width: 130px;
+  border: 1px solid blue;
+  margin-bottom: 10px
+}
+img {
+  height: 100px;
+  width: 100px;
+
+}
