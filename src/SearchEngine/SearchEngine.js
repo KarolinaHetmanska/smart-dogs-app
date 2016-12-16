@@ -19,7 +19,7 @@ export default class SearchEngine extends React.Component {
       <div>
         <Col xs={6} xsOffset={3}>
           <h1>SearchEngine</h1>
-          <form>
+          <form onSubmit={event => event.preventDefault()}>
             <FormGroup
               controlId="formBasicText">
               <FormControl
@@ -39,7 +39,7 @@ export default class SearchEngine extends React.Component {
           <ul>
             {
               events.filter(
-                event => event.name === this.state.search
+                event => event.name === this.state.search || event.category === this.state.search || event.price === this.state.search
               ).map(
                 event =>
                   <li key={event.id}>
