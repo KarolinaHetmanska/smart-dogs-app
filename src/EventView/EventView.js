@@ -21,8 +21,8 @@ export default (props) =>
           event =>
             <div key={event.id}>
               <p>{event.id}</p>
-              <p>{event.name}</p>
-              <p>{event.image}</p>
+              <p><h1>{event.name}</h1></p>
+              <p><img src={process.env.PUBLIC_URL + '/img/' + event.image} /></p>
               <p>{event.date}</p>
               <p>{event.category}</p>
               <p>{event.hour}</p>
