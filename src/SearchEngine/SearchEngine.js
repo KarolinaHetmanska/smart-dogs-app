@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router'
 import {events} from '../data'
 import {FormGroup, FormControl, Col, Button} from 'react-bootstrap'
+import {EventsView} from '../EventsView'
 
 
 export default class SearchEngine extends React.Component {
@@ -20,11 +21,6 @@ export default class SearchEngine extends React.Component {
             event.category.includes(this.state.search) ||
             event.description.includes(this.state.search)
           )
-        ).map(
-          event =>
-            <li key={event.id}>
-              {event.name} {event.description}
-            </li>
         )
       })
     }
@@ -59,9 +55,16 @@ export default class SearchEngine extends React.Component {
           </form>
           <h4>{this.state.search}</h4>
           <ul>
-            {
-              this.state.found
-            }
+            {/*{*/}
+              {/*this.state.found.map(*/}
+                {/*event =>*/}
+                  {/*<li key={event.id}>*/}
+                    {/*{event.name} {event.description}*/}
+                  {/*</li>*/}
+              {/*)*/}
+            {/*}*/}
+
+            <EventsView events={this.state.found} />
           </ul>
 
         </Col>
