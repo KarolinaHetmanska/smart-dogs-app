@@ -36,6 +36,10 @@ export default (props) => (
             <NavItem eventKey={2} href="#">Events</NavItem>
           </LinkContainer>
 
+          <LinkContainer to="/events/list">
+            <NavItem eventKey={3} href="#">EventsListView</NavItem>
+          </LinkContainer>
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>

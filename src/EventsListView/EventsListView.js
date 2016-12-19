@@ -2,12 +2,10 @@ import React from 'react'
 import {Col} from 'react-bootstrap'
 import {Link} from 'react-router'
 import {events} from '../data'
-import './EventsView.css';
+import './EventsListView.css';
 
 export default (props) => {
   return (
-    <div>
-      <h1>Events</h1>
       <div>
         {
           (props.events || events).map(event =>
@@ -22,8 +20,7 @@ export default (props) => {
           )
         }
       </div>
-      {props.children}
 
-    </div>
   )
 }
+
