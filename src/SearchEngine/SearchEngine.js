@@ -1,8 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router'
 import {events} from '../data'
-import {FormGroup, FormControl, Col, Button} from 'react-bootstrap'
-import {EventsView} from '../EventsView'
+import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem} from 'react-bootstrap'
+import {EventsListView} from '../EventsListView'
 
 
 export default class SearchEngine extends React.Component {
@@ -21,6 +20,17 @@ export default class SearchEngine extends React.Component {
             event.category.includes(this.state.search) ||
             event.description.includes(this.state.search)
           )
+        )
+      })
+    }
+    this.handleDropdownChange = (eventKey) => {
+      // if (this.state.search === '') {
+      //   return
+      // }
+      console.log(eventKey);
+      this.setState({
+        found: events.filter(
+         event => event.category === eventKey
         )
       })
     }
@@ -52,19 +62,14 @@ export default class SearchEngine extends React.Component {
               />
             </FormGroup>
             <Button type="submit">Search</Button>
+            <DropdownButton bsStyle={'Default'} title={'Kategorie'} onSelect={this.handleDropdownChange}>
+              <MenuItem eventKey="koncert">koncert</MenuItem>
+              <MenuItem eventKey="2">musical</MenuItem>
+              <MenuItem eventKey="3">spektakl</MenuItem>
+            </DropdownButton>
           </form>
-          <h4>{this.state.search}</h4>
           <ul>
-            {/*{*/}
-              {/*this.state.found.map(*/}
-                {/*event =>*/}
-                  {/*<li key={event.id}>*/}
-                    {/*{event.name} {event.description}*/}
-                  {/*</li>*/}
-              {/*)*/}
-            {/*}*/}
-
-            <EventsView events={this.state.found} />
+            <EventsListView events={this.state.found} />
           </ul>
 
         </Col>
