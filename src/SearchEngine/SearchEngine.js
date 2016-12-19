@@ -1,5 +1,5 @@
 import React from 'react'
-import {events} from '../data'
+import {events, places} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
 
@@ -23,14 +23,21 @@ export default class SearchEngine extends React.Component {
         )
       })
     }
-    this.handleDropdownChange = (eventKey) => {
-      // if (this.state.search === '') {
-      //   return
-      // }
-      console.log(eventKey);
+    this.handleDropdownCategory = (eventKey) => {
       this.setState({
         found: events.filter(
-         event => event.category === eventKey
+          event => event.category === eventKey
+        )
+      })
+    }
+    this.handleDropdownPlace = (eventKey) => {
+      if (this.eventKey === 'undefined') {
+        return
+      }
+      console.log(eventKey);
+      this.setState({
+        found: places.filter(
+          place => place.city === eventKey
         )
       })
     }
@@ -57,19 +64,27 @@ export default class SearchEngine extends React.Component {
                 onChange={
                   event => this.setState({
                     search: event.target.value
-                })
+                  })
                 }
               />
             </FormGroup>
             <Button type="submit">Search</Button>
-            <DropdownButton bsStyle={'Default'} title={'Kategorie'} onSelect={this.handleDropdownChange}>
-              <MenuItem eventKey="koncert">koncert</MenuItem>
-              <MenuItem eventKey="2">musical</MenuItem>
-              <MenuItem eventKey="3">spektakl</MenuItem>
-            </DropdownButton>
           </form>
+          <DropdownButton bsStyle={'Default'} title={'Kategorie'} onSelect={this.handleDropdownCategory}>
+            <MenuItem eventKey="koncert">koncert</MenuItem>
+            <MenuItem eventKey="musical">musical</MenuItem>
+            <MenuItem eventKey="spektakl">spektakl</MenuItem>
+            <MenuItem eventKey="#">wszystko</MenuItem>
+
+          </DropdownButton>
+          <DropdownButton bsStyle={'Default'} title={'Gdzie'} onSelect={this.handleDropdownPlace}>
+
+            <MenuItem eventKey="Gdańsk">Gdańsk</MenuItem>
+            <MenuItem eventKey="Sopot">Sopot</MenuItem>
+            <MenuItem eventKey="Gdynia">Gdynia</MenuItem>
+          </DropdownButton>
           <ul>
-            <EventsListView events={this.state.found} />
+            <EventsListView events={this.state.found}/>
           </ul>
 
         </Col>
