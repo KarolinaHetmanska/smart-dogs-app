@@ -13,7 +13,7 @@ export default [
   {
     id: 2,
     name: 'Piotruś Pan ',
-    image: 'PiotruśPan.jpg',
+    image: 'PiotrusPan.jpg',
     date: '2017-01-11',
     category: 'musical',
     hour: 11,
@@ -25,7 +25,7 @@ export default [
   {
     id: 3,
     name: 'Gdańskie Bienale Sztuki ',
-    image: 'GdańskieBienaleSztuki.jpg',
+    image: 'GdanskieBienaleSztuki.jpg',
     date: '2017-01-12',
     category: 'spektakl',
     hour: 19,
@@ -47,7 +47,7 @@ export default [
   {
     id: 5,
     name: 'Jose Gonzales',
-    image: 'Jose Gonzale.jpg',
+    image: 'JoseGonzales.jpg',
     date: '2017-02-01',
     category: 'koncert',
     hour: 20,
@@ -69,7 +69,7 @@ export default [
   {
     id: 7,
     name: 'Urszula Dudziak ',
-    image: 'Urszula Dudziak.jpg',
+    image: 'UrszulaDudziak.jpg',
     date: '2017-02-12',
     category: 'koncert',
     hour: 19,
@@ -80,7 +80,7 @@ export default [
   {
     id: 8,
     name: 'Cudowne musicale ',
-    image: 'Cudowne musicale.jpg',
+    image: 'CudowneMusicale.jpg',
     date: '2017-02-13',
     category: 'musical',
     hour: 18,
@@ -102,7 +102,7 @@ export default [
   {
     id: 10,
     name: 'Rod Stewart ',
-    image: 'Rod Stewart.jpg',
+    image: 'RodStewart.jpg',
     date: '2017-02-21',
     category: 'koncert',
     hour: 19,
@@ -113,7 +113,7 @@ export default [
   {
     id: 11,
     name: 'Skunk Anansie ',
-    image: 'Skunk Anansie.jpg',
+    image: 'SkunkAnansie.jpg',
     date: '2017-02-22',
     category: 'koncert',
     hour: 19,
@@ -124,7 +124,7 @@ export default [
   {
     id: 12,
     name: 'Lot nad kukułczym gniazdem ',
-    image: 'Lot nad kukułczym gniazdem.jpg',
+    image: 'LotNadKukulczymGniazdem.jpg',
     date: '2017-01-19',
     category: 'koncert',
     hour: 19,
@@ -135,7 +135,7 @@ export default [
   {
     id: 13,
     name: 'Paweł Domagała ',
-    image: 'Paweł Domagała.jpg',
+    image: 'PawelDomagala.jpg',
     date: '2017-02-26',
     category: 'koncert',
     hour: 19,
@@ -146,7 +146,7 @@ export default [
   {
     id: 14,
     name: 'Varius Manx ',
-    image: 'Varius Manx.jpg',
+    image: 'VariusManx.jpg',
     date: '2017-02-26',
     category: 'koncert',
     hour: 19,
@@ -179,7 +179,7 @@ export default [
   {
     id: 17,
     name: 'Ostra jazda  ',
-    image: 'Ostra jazda.jpg',
+    image: 'OstraJazda.jpg',
     date: '2017-03-05',
     category: 'koncert',
     hour: 19,
@@ -201,7 +201,7 @@ export default [
   {
     id: 19,
     name: 'Skazany na bluesa',
-    image: 'Skazany na bluesa.jpg',
+    image: 'SkazanyNaBluesa.jpg',
     date: '2017-03-15',
     category: 'spektakl',
     hour: 19,
@@ -212,7 +212,7 @@ export default [
   {
     id: 20,
     name: 'Gdynia Półmaraton',
-    image: 'Gdynia Półmaraton.jpg',
+    image: 'GdyniaPolmaraton.jpg',
     date: '2017-03-15',
     category: 'sport',
     hour: 10,
@@ -223,7 +223,7 @@ export default [
   {
     id: 21,
     name: 'Domowe Melodie',
-    image: 'Domowe Melodie.jpg',
+    image: 'DomoweMelodie.jpg',
     date: '2017-03-23',
     category: 'koncert',
     hour: 20,
@@ -245,7 +245,7 @@ export default [
   {
     id: 23,
     name: 'Gwiezdne Wojny Koncertowo',
-    image: 'Gwiezdne Wojny Koncertowo.jpg',
+    image: 'GwiezdneWojnyKoncertowo.jpg',
     date: '2017-04-01',
     category: 'koncert',
     hour: 19,
@@ -256,7 +256,7 @@ export default [
   {
     id: 24,
     name: 'Gdańsk Maraton',
-    image: 'Gdańsk Maraton.jpg',
+    image: 'GdanskMaraton.jpg',
     date: '2017-04-09',
     category: 'sport',
     hour: 9,
@@ -267,7 +267,7 @@ export default [
   {
     id: 25,
     name: 'Kłamstewka',
-    image: 'Kłamstewka.jpg',
+    image: 'Klamstewka.jpg',
     date: '2017-04-09',
     category: 'spektakl',
     hour: 20,
