@@ -4,7 +4,7 @@ export default [
     name: 'Teatr Szekspirowski',
     address: 'Wojciecha Bogusławskiego 1',
     image: 'url',
-    city: 'Gdansk',
+    city: 'Gdańsk',
     lat: 54.3519925,
     lng: 18.6491697,
     events: [
