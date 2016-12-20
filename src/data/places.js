@@ -7,17 +7,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3519925,
     lng: 18.6491697,
-    events: [
-      {
-        id: 1,
-        name: 'Metallica 30-ste urodziny',
-        image: 'url',
-        date: '2016-12-24',
-        category: 'koncert',
-        description: 'Metallica juz gra 30 lat. Sa zajebisci juz od 30 lat!!!',
-      },
-      3,7,9
-    ]
+    events: [1,2,3]
   },
 
   {
@@ -28,7 +18,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3609089,
     lng: 18.6489728,
-    events: []
+    events: [4, 5]
   },
 
   {
@@ -39,7 +29,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.35676059,
     lng: 18.64031339,
-    events: []
+    events: [6, 7]
   },
 
   {
@@ -50,7 +40,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3524,
     lng: 18.6596799,
-    events: []
+    events: [8, 9]
   },
 
   {
@@ -61,7 +51,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3515037,
     lng: 18.6566933,
-    events: []
+    events: [10, 11]
   },
 
   {
@@ -72,7 +62,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.4252231,
     lng: 18.5770218,
-    events: []
+    events: [12, 13]
   },
 
   {
@@ -83,7 +73,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.35676059,
     lng: 18.64031339,
-    events: []
+    events: [14, 15]
   },
 
   {
@@ -94,7 +84,7 @@ export default [
     city: 'Sopot',
     lat: 54.430404,
     lng: 18.565990,
-    events: []
+    events: [16, 17]
   },
 
   {
@@ -105,7 +95,7 @@ export default [
     city: 'Sopot',
     lat: 54.4482131,
     lng: 18.5684754,
-    events: []
+    events: [18, 19]
   },
 
   {
@@ -116,7 +106,7 @@ export default [
     city: 'Sopot',
     lat: 54.4446009,
     lng: 18.5444703,
-    events: []
+    events: [20, 21]
   },
 
   {
@@ -127,7 +117,7 @@ export default [
     city: 'Gdynia',
     lat: 54.5103125,
     lng: 18.5393304,
-    events: []
+    events: [22]
   },
 
   {
@@ -138,7 +128,7 @@ export default [
     city: 'Gdynia',
     lat: 54.5042787,
     lng: 18.5331138,
-    events: []
+    events: [23]
   },
 
   {
@@ -149,7 +139,7 @@ export default [
     city: 'Gdynia',
     lat: 54.516859,
     lng: 18.542739,
-    events: []
+    events: [24]
   },
 
   {
@@ -160,6 +150,6 @@ export default [
     city: 'Gdynia',
     lat: 54.5100893,
     lng: 18.5528934,
-    events: []
+    events: [25]
   }
 ]
