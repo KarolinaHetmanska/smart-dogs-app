@@ -1,0 +1,11 @@
+#chooseCategory, #chooseCity, #chooseDate {
+  width: 190px;
+  margin-right: 10px;
+}
+#chooseCategory {
+  margin-left: 15px;
+}
+.searchContainer {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
