@@ -36,7 +36,7 @@ export default (props) => (
             <NavItem eventKey={2} href="#">Events</NavItem>
           </LinkContainer>
 
-          <LinkContainer to="/events/list">
+          <LinkContainer to="/eventslist">
             <NavItem eventKey={3} href="#">EventsListView</NavItem>
           </LinkContainer>
 

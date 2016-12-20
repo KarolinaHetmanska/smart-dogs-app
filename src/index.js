@@ -27,10 +27,11 @@ ReactDOM.render(
       </Route>
 
       <Route path="/events" component={EventsView}>
-        <Route path="/events/list" component={EventsListView}>
-          <Route path="/events/:eventId" component={EventView}/>
-        </Route>
+        <Route path="/events/:eventId" component={EventView}/>
       </Route>
+
+      <Route path="/eventslist" component={EventsListView} />
+
 
       <Route path="*" component={NotFoundView}/>
     </Route>
