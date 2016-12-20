@@ -10,6 +10,10 @@
   -o-transition: border 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
 }
+.cardheader {
+  font-size: 18px !important;
+}
+
 
 .event-thumbnail > img, .event-thumbnail a > img {
   display: block;
