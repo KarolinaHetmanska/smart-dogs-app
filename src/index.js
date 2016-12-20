@@ -26,9 +26,8 @@ ReactDOM.render(
         <Route path="/places/:placeId" component={PlaceView}/>
       </Route>
 
-      <Route path="/events" component={EventsView}>
-        <Route path="/events/:eventId" component={EventView}/>
-      </Route>
+      <Route path="/events" component={EventsView}></Route>
+      <Route path="/events/:eventId" component={EventView}/>
 
       <Route path="/eventslist" component={EventsListView} />
 
