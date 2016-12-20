@@ -29,35 +29,51 @@ export default class SearchEngine extends React.Component {
         this.setState({
           found: events
         })
-      } else{
-      this.setState({
-        found: events.filter(
-          event => event.category === eventKey
-        ),
-        chosenCategory: eventKey
-      })
-    }}
+      } else {
+        this.setState({
+          found: events.filter(
+            event => event.category === eventKey
+          ),
+          chosenCategory: eventKey
+        })
+      }
+    }
 
     this.handleDropdownPlace = (eventKey) => {
       if (eventKey === 'Cale') {
         this.setState({
           found: places
         })
-      } else{
-      console.log(eventKey);
+      } else {
+        console.log(eventKey);
+        this.setState({
+          found: places.filter(
+            place => place.city === eventKey
+          ),
+          chosenPlace: eventKey
+        })
+      }
+    }
+
+    this.handleDropdownTime = (eventKey, event) => {
+      let chosenTimeFrame = (new Date().getTime() + eventKey)
       this.setState({
-        found: places.filter(
-          place => place.city === eventKey
+        found: events.filter(
+          event => new Date(event.date).getTime() < chosenTimeFrame
         ),
-        chosenPlace: eventKey
+        chosenTime: event.target.textContent
       })
-    }}
+      console.log(chosenTimeFrame)
+      console.log(typeof chosenTimeFrame)
+    }
 
     this.state = {
       search: '',
       found: [],
       chosenCategory: '',
-      chosenPlace: ''
+      chosenPlace: '',
+      chosenTime: ''
+
     }
   }
 
@@ -111,10 +127,12 @@ export default class SearchEngine extends React.Component {
               <MenuItem eventKey="Cale">Całe Trójmiasto</MenuItem>
             </DropdownButton>
 
-            <DropdownButton id="chooseDate" bsStyle={'default'} title={'Kiedy'}>
-              <MenuItem eventKey="Dzisiaj">Dzisiaj</MenuItem>
-              <MenuItem eventKey="Jutro">Jutro</MenuItem>
-              <MenuItem eventKey="Weekend">Weekend</MenuItem>
+            <DropdownButton id="chooseDate" bsStyle={'default'}
+                            title={this.state.chosenTime !== '' ? this.state.chosenTime : 'Kiedy'}
+                            onSelect={this.handleDropdownTime}>
+              <MenuItem eventKey={604800000}>Najbliższy tydzień</MenuItem>
+              <MenuItem eventKey={2592000000}>Najbliższy miesiąc</MenuItem>
+              <MenuItem eventKey={7776000000}>Najbliższy kwartał</MenuItem>
             </DropdownButton>
 
           </Col>
@@ -131,4 +149,5 @@ export default class SearchEngine extends React.Component {
 
     )
   }
+
 }
