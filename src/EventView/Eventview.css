@@ -1,0 +1,11 @@
+.singleEvent-container {
+  margin-top: 40px;
+}
+.event-img{
+  min-height: 350px;
+  max-width: 100%;
+  border-radius: 20px;
+}
+.event-name {
+  margin-top: 0;
+}
