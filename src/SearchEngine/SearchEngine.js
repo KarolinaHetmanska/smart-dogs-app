@@ -2,6 +2,7 @@ import React from 'react'
 import {events, places} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
+import {ComingEvents} from '../ComingEvents'
 import './SearchEngine.css'
 
 
@@ -140,10 +141,11 @@ export default class SearchEngine extends React.Component {
         <Row>
           <Col>
             <ul>
-              <EventsListView events={this.state.found}/>
+              { this.state.found.length !== 0 ? <EventsListView events={this.state.found}/> : <ComingEvents /> }
             </ul>
           </Col>
         </Row>
+
       </div>
 
 
