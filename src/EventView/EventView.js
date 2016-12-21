@@ -13,7 +13,7 @@ export default (props) =>
           <div className="singleEvent-container" key={event.id}>
             <Row>
               <Col sm={4} smOffset={2}>
-                <img className="event-img" src={process.env.PUBLIC_URL + '/img/' + event.image}/>
+                <img className="event-img" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
               </Col>
               <Col sm={4}>
                 <h1 className="event-name">{event.name}</h1>
