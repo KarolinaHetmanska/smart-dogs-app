@@ -3,7 +3,7 @@ import {events} from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
 import './Eventview.css'
 
-export default (props) =>
+export default (props) => (
   <Grid>
     {
       events.filter(
@@ -29,3 +29,4 @@ export default (props) =>
       )
     }
   </Grid>
+)
