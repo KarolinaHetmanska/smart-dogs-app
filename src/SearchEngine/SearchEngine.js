@@ -141,8 +141,7 @@ export default class SearchEngine extends React.Component {
         <Row>
           <Col>
             <ul>
-              <ComingEvents />
-              <EventsListView dupa={this.state.found}/>
+              { this.state.found.length !== 0 ? <EventsListView events={this.state.found}/> : <ComingEvents /> }
             </ul>
           </Col>
         </Row>
