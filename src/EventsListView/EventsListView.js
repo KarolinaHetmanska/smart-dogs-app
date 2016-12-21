@@ -15,8 +15,8 @@ export default (props) => {
                 <h3 className="cardheader">{event.name}</h3>
                 <p>Description</p>
                 <p>
-                  <Button bsStyle="primary">Cena</Button>&nbsp;
-                  <Button bsStyle="default">Data</Button>
+                  <Button bsStyle="primary">{event.price} PLN</Button>&nbsp;
+                  <Button bsStyle="default">{event.date}</Button>
                 </p>
               </Thumbnail>
             </Link>
