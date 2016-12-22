@@ -8,7 +8,7 @@ import {App} from './App';
 import {NotFoundView} from './NotFoundView';
 import {EventsView} from './EventsView';
 import {EventsListView} from './EventsListView';
-import {EventView} from './EventView';
+import {SingleEventView} from './SingleEventView';
 import {SearchEngine} from './SearchEngine';
 import './index.css';
 
@@ -26,8 +26,8 @@ ReactDOM.render(
         <Route path="/places/:placeId" component={PlaceView}/>
       </Route>
 
-      <Route path="/events" component={EventsView}></Route>
-      <Route path="/events/:eventId" component={EventView}/>
+      <Route path="/events" component={EventsView} />
+      <Route path="/events/:eventId" component={SingleEventView}/>
 
       <Route path="/eventslist" component={EventsListView} />
 
