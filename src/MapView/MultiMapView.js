@@ -9,27 +9,31 @@ export default (props) => {
     place =>
       props.searchedEvents.find(
         event =>
-          place.events.indexOf(event.id) !== -1
+        place.events.indexOf(event.id) !== -1
       )
   )
-  {console.log(placesOfEvents)}
+  {
+    console.log(placesOfEvents)
+  }
 
   return (
-    <div></div>
+    <div style={{height: 600, width: '100%'}}>
+      <GoogleMap
+        bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
+        defaultCenter={{
+          lat: 54.405,
+          lng: 18.595
+        }}
+        defaultZoom={11}>
+        {
+          placesOfEvents.map(
+            place =>
+              <PlaceMarker lat={place.lat}
+                           lng={place.lng}
+                           text={place.name}> </PlaceMarker>
+          )
+        }
+      </GoogleMap>
+    </div>
   )
-  // return (
-  //   <div style={{height: 400, width: 800}}>
-  //     <GoogleMap
-  //       bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
-  //       defaultCenter={{
-  //         lat: placeOfEvent.lat,
-  //         lng: placeOfEvent.lng
-  //       }}
-  //       defaultZoom={16}>
-  //       <PlaceMarker lat={placeOfEvent.lat}
-  //                    lng={placeOfEvent.lng}
-  //                    text={placeOfEvent.name}> </PlaceMarker>
-  //     </GoogleMap>
-  //   </div>
-  // )
 }
