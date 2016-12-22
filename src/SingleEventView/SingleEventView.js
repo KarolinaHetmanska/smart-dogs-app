@@ -1,5 +1,5 @@
 import React from 'react'
-import {MapView} from '../MapView'
+import {SingleMapView} from '../MapView'
 import {events, places} from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
 import './SingleEventview.css'
@@ -40,7 +40,7 @@ export default (props) => {
               </Row>
               <Row>
                 <Col sm={6} smOffset={1}>
-                  <MapView event={props.params.eventId}/>
+                  <SingleMapView event={props.params.eventId}/>
                   {console.log(props.params.eventId)}
                 </Col>
               </Row>

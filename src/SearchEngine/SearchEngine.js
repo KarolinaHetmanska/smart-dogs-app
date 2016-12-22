@@ -3,6 +3,7 @@ import {events, places} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
 import {ComingEvents} from '../ComingEvents'
+import {MultiMapView} from '../MapView'
 import './SearchEngine.css'
 
 
@@ -141,8 +142,18 @@ export default class SearchEngine extends React.Component {
         <Row>
           <Col>
             <ul>
-              { this.state.found.length !== 0 ? <EventsListView events={this.state.found}/> : <ComingEvents /> }
+              <EventsListView events={this.state.found.length !== 0 ? this.state.found : events.sort(
+                (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
+              ).slice(0, 8)}/>
+
             </ul>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <MultiMapView searchedEvents={this.state.found.length !== 0 ? this.state.found : events.sort(
+              (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
+            ).slice(0, 8)}/>
           </Col>
         </Row>
 
