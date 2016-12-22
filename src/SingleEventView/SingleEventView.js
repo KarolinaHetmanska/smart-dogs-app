@@ -1,7 +1,8 @@
 import React from 'react'
+import { MapView } from '../MapView'
 import {events} from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
-import './Eventview.css'
+import './SingleEventview.css'
 
 export default (props) => (
   <Grid>
@@ -22,7 +23,17 @@ export default (props) => (
                 <p>Godzina: {event.hour}.00</p>
                 <p>Czas trwania: {event.duration} min</p>
                 <p>Cena: {event.price} PLN</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={6} smOffset={2}>
                 <p>{event.description}</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={6} smOffset={1}>
+                <MapView event={props.params.eventId}/>
+                {console.log(props.params.eventId)}
               </Col>
             </Row>
           </div>
