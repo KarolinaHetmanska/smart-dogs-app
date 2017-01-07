@@ -49,8 +49,8 @@ export default class SearchEngine extends React.Component {
       } else {
         console.log(eventKey);
         this.setState({
-          found: places.filter(
-            place => place.city === eventKey
+          found: events.filter(
+            event => event.city === eventKey
           ),
           chosenPlace: eventKey
         })
