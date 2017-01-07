@@ -7,7 +7,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3519925,
     lng: 18.6491697,
-    events: [1,2,3]
+    events: [6,19]
   },
 
   {
@@ -18,7 +18,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3609089,
     lng: 18.6489728,
-    events: [4, 5]
+    events: [9,12,18]
   },
 
   {
@@ -29,7 +29,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.35676059,
     lng: 18.64031339,
-    events: [6, 7]
+    events: [24]
   },
 
   {
@@ -40,7 +40,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3524,
     lng: 18.6596799,
-    events: [8, 9]
+    events: [8]
   },
 
   {
@@ -51,7 +51,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.3515037,
     lng: 18.6566933,
-    events: [10, 11]
+    events: [3]
   },
 
   {
@@ -62,7 +62,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.4252231,
     lng: 18.5770218,
-    events: [12, 13]
+    events: [10,25]
   },
 
   {
@@ -73,7 +73,7 @@ export default [
     city: 'Gdańsk',
     lat: 54.35676059,
     lng: 18.64031339,
-    events: [14, 15]
+    events: [4]
   },
 
   {
@@ -84,7 +84,7 @@ export default [
     city: 'Sopot',
     lat: 54.430404,
     lng: 18.565990,
-    events: [16, 17]
+    events: [14]
   },
 
   {
@@ -95,7 +95,7 @@ export default [
     city: 'Sopot',
     lat: 54.4482131,
     lng: 18.5684754,
-    events: [18, 19]
+    events: [7,21]
   },
 
   {
@@ -106,7 +106,7 @@ export default [
     city: 'Sopot',
     lat: 54.4446009,
     lng: 18.5444703,
-    events: [20, 21]
+    events: [1,13]
   },
 
   {
@@ -117,7 +117,7 @@ export default [
     city: 'Gdynia',
     lat: 54.5103125,
     lng: 18.5393304,
-    events: [22]
+    events: [2,17,22]
   },
 
   {
@@ -128,7 +128,7 @@ export default [
     city: 'Gdynia',
     lat: 54.5042787,
     lng: 18.5331138,
-    events: [23]
+    events: [5,16,20]
   },
 
   {
@@ -139,7 +139,7 @@ export default [
     city: 'Gdynia',
     lat: 54.516859,
     lng: 18.542739,
-    events: [24]
+    events: [23]
   },
 
   {
@@ -150,6 +150,6 @@ export default [
     city: 'Gdynia',
     lat: 54.5100893,
     lng: 18.5528934,
-    events: [25]
+    events: [11,15]
   }
 ]
