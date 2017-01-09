@@ -12,24 +12,35 @@ export default class SearchEngine extends React.Component {
     super()
 
     this.handleSubmit = (event) => {
+      const search = this.state.search.toLowerCase()
       event.preventDefault()
       if (this.state.search === '') {
         return
       }
-      this.setState({
-        found: events.filter(
-          event => (
-            event.name.includes(this.state.search) ||
-            event.category.includes(this.state.search) ||
-            event.description.includes(this.state.search)
-          )
+
+      const foundEvents = events.filter(
+        event => (
+          event.name.toLowerCase().includes(search) ||
+          event.category.toLowerCase().includes(search) ||
+          event.description.toLowerCase().includes(search)
         )
-      })
+      )
+      if (foundEvents.length > 0) {
+        this.setState({
+          found: foundEvents
+        })
+      } else {
+        this.setState({
+          errorMessage: "Nie znaleziono żadnych wyników, ale sprawdź wydarzenia, które rekomendujemy:",
+          found: []
+        })
+      }
     }
     this.handleDropdownCategory = (eventKey) => {
       if (eventKey === 'wszystko') {
         this.setState({
-          found: events
+          found: events,
+          chosenCategory: eventKey
         })
       } else {
         this.setState({
@@ -44,7 +55,8 @@ export default class SearchEngine extends React.Component {
     this.handleDropdownPlace = (eventKey) => {
       if (eventKey === 'Cale') {
         this.setState({
-          found: places
+          found: events,
+          chosenPlace: eventKey
         })
       } else {
         console.log(eventKey);
@@ -85,16 +97,18 @@ export default class SearchEngine extends React.Component {
       <div>
         <Row className="searchContainer">
           <Col xs={8} xsOffset={2}>
-            <Col xs={6} xsOffset={3}>
-              <h1>SearchEngine</h1>
-            </Col>
-            <Col xs={10}>
-              <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+              <Col xs={6} xsOffset={3}>
+                <h1>Idziemy w miasto!</h1>
+                <br />
+              </Col>
+              <Col xs={10}>
+
                 <FormGroup
                   controlId="formBasicText">
                   <FormControl
                     type="text"
-                    placeholder="Co chcesz zrobić?"
+                    placeholder="Co Ciebie interesuje?"
                     value={this.state.search}
                     onChange={
                       event => this.setState({
@@ -103,11 +117,12 @@ export default class SearchEngine extends React.Component {
                     }
                   />
                 </FormGroup>
-              </form>
-            </Col>
-            <Col xs={2}>
-              <Button type="submit">Search</Button>
-            </Col>
+
+              </Col>
+              <Col xs={2}>
+                <Button type="submit">Szukaj</Button>
+              </Col>
+            </form>
           </Col>
 
           <Col xs={10} xsOffset={2}>
@@ -141,6 +156,10 @@ export default class SearchEngine extends React.Component {
         </Row>
         <Row>
           <Col>
+            <h2 className="error-message">{this.state.errorMessage || null}</h2>
+            <br />
+            <br />
+
             <ul>
               <EventsListView events={this.state.found.length !== 0 ? this.state.found : events.sort(
                 (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()

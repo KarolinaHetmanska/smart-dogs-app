@@ -13,7 +13,7 @@ export default (props) => {
             <Link to={'/events/' + event.id}>
               <Thumbnail bsClass="event-thumbnail" src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200">
                 <h3 className="cardheader">{event.name}</h3>
-                <p>Description</p>
+
                 <p>
                   <Button bsStyle="primary">{event.price} PLN</Button>&nbsp;
                   <Button bsStyle="default">{event.date}</Button>

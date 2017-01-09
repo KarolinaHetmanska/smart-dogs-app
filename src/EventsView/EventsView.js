@@ -9,7 +9,8 @@ export default (props) => {
   return (
     <div>
       <div>
-        <h1>Events</h1>
+        <h1>Lista wydarzeń</h1>
+        <br />
         <EventsListView />
       </div>
       {props.children}
