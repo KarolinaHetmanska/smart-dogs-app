@@ -21,26 +21,30 @@ export default (props) => (
     <Navbar collapseOnSelect fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">
+          <Link to="/">
             <img className="nav-logo" src={logo} />
-          </a>
+          </Link>
         </Navbar.Brand>
 
         <Navbar.Toggle />
       </Navbar.Header>
 
       <Navbar.Collapse>
-        <Nav>
+        <Nav pullRight>
           <LinkContainer to="/places">
-            <NavItem eventKey={1} href="#">Places</NavItem>
+            <NavItem eventKey={1} href="#"><span className="menu-item">MIEJSCA</span></NavItem>
           </LinkContainer>
 
           <LinkContainer to="/events">
-            <NavItem eventKey={2} href="#">Events</NavItem>
+            <NavItem eventKey={2} href="#">WYDARZENIA</NavItem>
           </LinkContainer>
 
-          <LinkContainer to="/eventslist">
-            <NavItem eventKey={3} href="#">EventsListView</NavItem>
+          <LinkContainer to="/favorites">
+            <NavItem eventKey={3} href="#">ULUBIONE</NavItem>
+          </LinkContainer>
+
+          <LinkContainer to="/login">
+            <NavItem eventKey={4} href="#">ZALOGUJ</NavItem>
           </LinkContainer>
 
         </Nav>
