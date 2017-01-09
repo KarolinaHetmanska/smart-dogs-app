@@ -7,20 +7,20 @@ import './SingleEventview.css'
 export default (props) => {
 
   const placeOfEvent = places.find(
-    place => place.events.indexOf(parseInt(props.params.eventId)) !== -1
+    place => place.events.indexOf(parseInt((props.params.eventId),10)) !== -1
   )
 
   return (
     <Grid>
       {
         events.filter(
-          event => event.id === parseInt(props.params.eventId)
+          event => event.id === parseInt((props.params.eventId),10)
         ).map(
           event =>
             <div className="singleEvent-container" key={event.id}>
               <Row>
                 <Col sm={4} smOffset={2}>
-                  <img className="event-img" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
+                  <img className="event-img" role="presentation" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
                   <h1 className="event-name">{event.name}</h1>
