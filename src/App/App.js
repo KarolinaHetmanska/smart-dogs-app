@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router'
 import  logo from '../../public/img/logo-w-miasto.png'
@@ -7,8 +7,6 @@ import {
   Navbar,
   Nav,
   NavItem,
-  NavDropdown,
-  MenuItem,
   Grid,
   Row,
   Col
@@ -22,7 +20,7 @@ export default (props) => (
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <img className="nav-logo" src={logo} />
+            <img className="nav-logo" src={logo} role="presentation"  />
           </Link>
         </Navbar.Brand>
 
