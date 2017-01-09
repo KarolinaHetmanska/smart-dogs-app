@@ -10,12 +10,10 @@ import {EventsView} from './EventsView';
 import {EventsListView} from './EventsListView';
 import {SingleEventView} from './SingleEventView';
 import {SearchEngine} from './SearchEngine';
-import './index.css';
-
 
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'bootstrap/dist/css/bootstrap.css'
-
+import './index.css';
 
 ReactDOM.render(
   <Router history={browserHistory}>

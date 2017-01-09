@@ -33,13 +33,17 @@ export default (props) => {
                   <p>Miasto: {placeOfEvent.city}</p>
                 </Col>
               </Row>
+              <br />
+              <br />
               <Row>
                 <Col sm={6} smOffset={2}>
                   <p>{event.description}</p>
                 </Col>
               </Row>
+              <br/>
+              <br/>
               <Row>
-                <Col sm={6} smOffset={1}>
+                <Col sm={6} smOffset={2}>
                   <SingleMapView event={props.params.eventId}/>
                   {console.log(props.params.eventId)}
                 </Col>
