@@ -4,7 +4,8 @@ import {Thumbnail} from 'react-bootstrap'
 
 export default (props) =>
   <div>
-    <h1>Places</h1>
+    <h1>Miejsca Wydarzeń</h1>
+    <br />
     <div>
       {
         places.map(place =>
