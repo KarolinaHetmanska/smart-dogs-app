@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router'
+import  logo from '../../public/img/logo-w-miasto.png'
 
 import {
   Navbar,
@@ -20,7 +21,9 @@ export default (props) => (
     <Navbar collapseOnSelect fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">wmiasto</Link>
+          <a href="#">
+            <img className="nav-logo" src={logo} />
+          </a>
         </Navbar.Brand>
 
         <Navbar.Toggle />
