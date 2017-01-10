@@ -9,7 +9,8 @@ import {NotFoundView} from './NotFoundView';
 import {EventsView} from './EventsView';
 import {EventsListView} from './EventsListView';
 import {SingleEventView} from './SingleEventView';
-import {SearchEngine} from './SearchEngine';
+import {SearchEngineView} from './SearchEngine/SearchEngineView';
+
 
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -18,7 +19,7 @@ import './index.css';
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={SearchEngine}/>
+      <IndexRoute component={SearchEngineView}/>
 
       <Route path="/places" component={PlacesView}>
         <Route path="/places/:placeId" component={PlaceView}/>
