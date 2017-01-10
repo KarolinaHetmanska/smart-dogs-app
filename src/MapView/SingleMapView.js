@@ -1,13 +1,13 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import PlaceMarker from './PlaceMarker'
-import {events, places} from '../data'
+import {places} from '../data'
 
 export default (props) => {
 
   const placeOfEvent = places.find(
-    place => place.events.indexOf(parseInt(props.event)) !== -1
-  )
+    place => place.events.indexOf(parseInt((props.event),10)) !== -1
+    )
 
   return (
     <div style={{height: 400, width: 800}}>

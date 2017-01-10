@@ -1,8 +1,7 @@
 import React from 'react'
-import {events, places} from '../data'
+import {events} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
-import {ComingEvents} from '../ComingEvents'
 import {MultiMapView} from '../MapView'
 import './SearchEngine.css'
 
@@ -27,16 +26,21 @@ export default class SearchEngine extends React.Component {
       )
       if (foundEvents.length > 0) {
         this.setState({
-          found: foundEvents
+          found: foundEvents,
+          errorMessage: false
         })
       } else {
         this.setState({
-          errorMessage: "Nie znaleziono żadnych wyników, ale sprawdź wydarzenia, które rekomendujemy:",
+          errorMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
           found: []
         })
       }
     }
     this.handleDropdownCategory = (eventKey) => {
+      this.setState({
+        errorMessage: false,
+        search: ''
+      })
       if (eventKey === 'wszystko') {
         this.setState({
           found: events,
@@ -53,10 +57,15 @@ export default class SearchEngine extends React.Component {
     }
 
     this.handleDropdownPlace = (eventKey) => {
+      this.setState({
+        errorMessage: false,
+        search: ''
+      })
       if (eventKey === 'Cale') {
         this.setState({
           found: events,
-          chosenPlace: eventKey
+          chosenPlace: eventKey,
+          errorMessage: false
         })
       } else {
         console.log(eventKey);
@@ -75,7 +84,8 @@ export default class SearchEngine extends React.Component {
         found: events.filter(
           event => new Date(event.date).getTime() < chosenTimeFrame
         ),
-        chosenTime: event.target.textContent
+        chosenTime: event.target.textContent,
+        errorMessage: false
       })
       console.log(chosenTimeFrame)
       console.log(typeof chosenTimeFrame)
@@ -86,7 +96,8 @@ export default class SearchEngine extends React.Component {
       found: [],
       chosenCategory: '',
       chosenPlace: '',
-      chosenTime: ''
+      chosenTime: '',
+      phrase: "Co Ciebie interesuje?"
 
     }
   }
@@ -108,7 +119,7 @@ export default class SearchEngine extends React.Component {
                   controlId="formBasicText">
                   <FormControl
                     type="text"
-                    placeholder="Co Ciebie interesuje?"
+                    placeholder={this.state.phrase}
                     value={this.state.search}
                     onChange={
                       event => this.setState({
@@ -156,7 +167,7 @@ export default class SearchEngine extends React.Component {
         </Row>
         <Row>
           <Col>
-            <h2 className="error-message">{this.state.errorMessage || null}</h2>
+            <h3 className="error-message">{this.state.found.length !== 0 ? 'Najbliższe wydarzenia dla "'+ (this.state.search || this.state.chosenCategory || this.state.chosenPlace || this.chosenTime) +'"' : this.state.errorMessage}</h3>
             <br />
             <br />
 
