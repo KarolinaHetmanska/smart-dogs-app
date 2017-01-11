@@ -4,10 +4,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-        case 'ADD_EVENT_TO_FAVORITES':
+    case 'ADD_EVENT_TO_FAVORITES':
       return {
         ...state,
-        favoriteEvents: state.favoriteEvents.concat(action.eventId)
+        favoriteEvents: state.favoriteEvents.indexOf(action.eventId) !== -1 ? state.favoriteEvents : state.favoriteEvents.concat(action.eventId)
       }
     default:
       return state
