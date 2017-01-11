@@ -28,7 +28,7 @@ const EventsListView = props => {
             </Link>
           </Col>
         )
-      }
+                                               }
     </div>
 
   )

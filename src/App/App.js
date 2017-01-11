@@ -29,7 +29,7 @@ export default (props) => (
 
       <Navbar.Collapse>
         <Nav pullRight>
-          <LinkContainer to="/places">
+          <LinkContainer to="/place">
             <NavItem eventKey={1} href="#"><span className="menu-item">MIEJSCA</span></NavItem>
           </LinkContainer>
 

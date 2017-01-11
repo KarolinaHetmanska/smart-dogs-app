@@ -1,10 +1,11 @@
 import { createStore, combineReducers } from 'redux'
 
-//import { reducer as favoriteEventsReducer } from './SingleEventView'
 import { reducer as eventsReducer } from './EventsListView'
+import { reducer as placeReducer } from './PlaceView'
 
 const reducer = combineReducers({
   eventsData: eventsReducer,
+  placeData: placeReducer
 
 })
 
