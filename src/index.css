@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
   margin: 0;
-  padding-top: 100px;
+  padding-top: 60px;
   font-family: Raleway, sans-serif;
 }
 .navbar,

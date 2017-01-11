@@ -37,3 +37,8 @@ outline: none;
   margin: 0 auto;
   margin-bottom: 20px;
 }
+.search-background{
+  background-image: url('../../public/img/gdansk.jpg');
+  width: 100%;
+}
+
