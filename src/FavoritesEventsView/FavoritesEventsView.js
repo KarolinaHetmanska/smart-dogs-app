@@ -2,9 +2,12 @@ import React from 'react'
 import {
   Button,
   Thumbnail,
-  Col
+  Col,
+  Row
 } from 'react-bootstrap'
 import {Link} from 'react-router'
+
+import {MultiMapView} from '../MapView'
 
 import {connect} from 'react-redux'
 
@@ -15,13 +18,18 @@ const mapStateToProps = state => ({
 
 const FavoritesEventsView = props => {
 
+  const eventsToDisplay = props.allEvents.filter(
+    event => props.favoritesEvents.indexOf(event.id) !== -1
+  )
+
   return (
     < div >
-      {console.log(props.favoritesEvents)}
+      <br />
+      <br />
+      <h1>Lista ulubionyc wydarzeń</h1>
+      <br />
       {
-        props.allEvents.filter(
-          event => props.favoritesEvents.indexOf(event.id) !== -1
-        ).map(event =>
+        eventsToDisplay.map(event =>
           <Col xs={6} sm={3} key={event.id}>
             <Link to={'/events/' + event.id}>
               <Thumbnail bsClass="event-thumbnail" src={process.env.PUBLIC_URL + '/img/events/' + event.image}
@@ -36,7 +44,13 @@ const FavoritesEventsView = props => {
             </Link>
           </Col>
         )
+
       }
+      <Row>
+        <Col sm={6} smOffset={2}>
+          <MultiMapView searchedEvents={eventsToDisplay}/>
+        </Col>
+      </Row>
     </div>
   )
 }
