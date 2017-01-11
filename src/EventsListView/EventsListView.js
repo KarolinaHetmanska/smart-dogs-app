@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 })
 
 const EventsListView = props => {
+
   return (
     <div>
       {
