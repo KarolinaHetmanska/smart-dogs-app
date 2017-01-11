@@ -112,12 +112,12 @@ export default class SearchEngine extends React.Component {
                 <h1 className="caption-main">Miasto żyje!</h1>
               </Col>
               <Col>
-                <h3 className="caption-submain">Wszystkie eventy i wydarzenia kulturalne w jednym miejscu</h3>
+                <h3 className="caption-submain">Wszystkie wydarzenia kulturalne w jednym miejscu</h3>
                 <br/>
               </Col>
               <Row>
                 <Col xs={8} xsOffset={2}>
-                  <div className="searchForm-wrapper">
+                  <div className="search-form-wrapper">
                     <input className="search-form"
                            type="text"
                            placeholder={this.state.phrase}
@@ -128,7 +128,7 @@ export default class SearchEngine extends React.Component {
                              })
                            }
                     />
-                    <button type="submit" className="search-button">Szukaj</button>
+                    <button type="submit" className="search-button"><span className="glyphicon glyphicon-search"></span></button>
                   </div>
                 </Col>
               </Row>
@@ -137,7 +137,7 @@ export default class SearchEngine extends React.Component {
           </Col>
           <Row>
             <Col>
-              <DropdownButton id="chooseCategory" bsStyle={'default'}
+              <DropdownButton id="select-category" bsStyle={'default'}
                               title={this.state.chosenCategory !== '' ? this.state.chosenCategory : 'Kategorie'}
                               onSelect={this.handleDropdownCategory}>
                 <MenuItem eventKey="koncert">koncert</MenuItem>
@@ -146,7 +146,7 @@ export default class SearchEngine extends React.Component {
                 <MenuItem eventKey="wszystko">wszystko</MenuItem>
               </DropdownButton>
 
-              <DropdownButton id="chooseCity" bsStyle={'default'}
+              <DropdownButton id="select-city" bsStyle={'default'}
                               title={this.state.chosenPlace !== '' ? this.state.chosenPlace : 'Gdzie'}
                               onSelect={this.handleDropdownPlace}>
                 <MenuItem eventKey="Gdańsk">Gdańsk</MenuItem>
@@ -155,7 +155,7 @@ export default class SearchEngine extends React.Component {
                 <MenuItem eventKey="Cale">Całe Trójmiasto</MenuItem>
               </DropdownButton>
 
-              <DropdownButton id="chooseDate" bsStyle={'default'}
+              <DropdownButton id="select-date" bsStyle={'default'}
                               title={this.state.chosenTime !== '' ? this.state.chosenTime : 'Kiedy'}
                               onSelect={this.handleDropdownTime}>
                 <MenuItem eventKey={604800000}>Najbliższy tydzień</MenuItem>

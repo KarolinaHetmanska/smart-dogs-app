@@ -10,15 +10,23 @@ export default (props) => {
       {
         (props.events || events).map(event =>
           <Col xs={6} sm={3} key={event.id}>
-            <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
-              <div className="event-thumbnail">
-                <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200" />
-                <h3 className="cardheader">{event.name}</h3>
-                <p><span>{event.hour}.00 | </span>{event.date}</p>
-                <p>{event.price} PLN<span className="thumbnail-category">{event.category}</span></p>
+            <div className="event-thumbnail">
+              <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
 
+                <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
+                <h3 className="thumbnail-cardheader">{event.name}</h3>
+              </Link>
+              <div className="thumbnail-details">
+                <span className="add-to-favorites-toggle-button"><span
+                className="glyphicon glyphicon-heart-empty"></span> Zapisz</span>
+                <p><span className="glyphicon glyphicon-list-alt"></span><span> {event.hour}.00 | </span>{event.date}
+                </p>
+                <p><span className="glyphicon glyphicon-map-marker"></span> {event.city}</p>
+                <br />
+                <p><span className="thumbnail-price">{event.price} PLN</span><span
+                  className="thumbnail-category">{event.category}</span></p>
               </div>
-            </Link>
+            </div>
           </Col>
         )
       }

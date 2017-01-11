@@ -1,19 +1,48 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
 
-.event-thumbnail{
-  background-color: white;
-  color: #4b4c4f;
-  font-family: sans-serif;
+.event-thumbnail:hover img {
+  opacity: 0.8;
 }
-.cardheader {
+
+.event-thumbnail:hover .add-to-favorites-toggle-button{
+  display: block;
+}
+
+.thumbnail-cardheader {
   font-family: sans-serif;
   font-size: 18px !important;
   color: #4b4c4f;
+  margin-left: 8px;
 }
 .thumbnail-no-highlight:hover{
   text-decoration: none;
 }
 .thumbnail-category{
   float:right;
+  padding: 10px;
+  background-color: #a9b9fc;
+  border-radius: 5px;
+  position: relative;
+  top: -12px;
+}
+
+.thumbnail-price {
+  padding: 10px;
+  background-color: darkgrey;
+  color: white;
+  border-radius: 5px;
+}
+.add-to-favorites-toggle-button {
+  background-color: #fd5d1d;
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left:10px;
+  display: none;
+}
+.thumbnail-details {
+  padding: 8px;
 }

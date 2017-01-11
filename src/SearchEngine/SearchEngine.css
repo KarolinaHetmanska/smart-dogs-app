@@ -1,8 +1,8 @@
-#chooseCategory, #chooseCity, #chooseDate {
+#select-category, #select-city, #select-date {
   width: 193px;
 }
 
-#chooseCity {
+#select-city {
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -29,9 +29,14 @@
 .search-button {
   width: 10%;
   background-color: transparent;
+  font-size: 22px;
+  color: grey;
+}
+.glyphicon-search {
+  vertical-align: middle;
 }
 
-.searchForm-wrapper {
+.search-form-wrapper {
   width: 600px;
   border-radius: 6px;
   border: 1px solid lightgrey;
