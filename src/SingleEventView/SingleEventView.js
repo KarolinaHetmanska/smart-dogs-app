@@ -10,6 +10,13 @@ const mapStateToProps = state => ({
   allEvents: state.eventsData.allEvents
 })
 
+const mapDispatchProps = dispatch => ({
+   addPersonToFavorites: (eventId) => dispatch({
+    type: 'ADD_EVENT_TO_FAVORITES',
+    eventId: eventId
+  })
+})
+
 const SingleEventView = props => {
 
   const placeOfEvent = places.find(
@@ -29,6 +36,11 @@ const SingleEventView = props => {
                   <img className="event-img" role="presentation" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
+                  <button onClick={() => props.addPersonToFavorites(event.id)}>
+                    Add to favorites
+                  </button>
+                  <br />
+                  <hr />
                   <h1 className="event-name">{event.name}</h1>
                   <p>Data: {event.date}</p>
                   <p>Kategoria: {event.category}</p>
@@ -61,4 +73,4 @@ const SingleEventView = props => {
   )
 }
 
-export default connect(mapStateToProps)(SingleEventView)
+export default connect(mapStateToProps, mapDispatchProps)(SingleEventView)
