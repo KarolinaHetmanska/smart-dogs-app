@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux'
 
-import { reducer as favoriteEventsReducer } from './SingleEventView'
+import { reducer as favoritesEventsReducer } from './SingleEventView'
 import { reducer as eventsReducer } from './EventsListView'
 
 const reducer = combineReducers({
   eventsData: eventsReducer,
-  favoriteData:favoriteEventsReducer
+  favoritesData:favoritesEventsReducer
 
 })
 
