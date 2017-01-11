@@ -1,5 +1,5 @@
 const initialState = {
-  favoriteEvents: []
+  favoritesEvents: []
 }
 
 export default (state = initialState, action) => {
@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case 'ADD_EVENT_TO_FAVORITES':
       return {
         ...state,
-        favoriteEvents: state.favoriteEvents.indexOf(action.eventId) !== -1 ? state.favoriteEvents : state.favoriteEvents.concat(action.eventId)
+        favoritesEvents: state.favoritesEvents.indexOf(action.eventId) !== -1 ? state.favoritesEvents : state.favoritesEvents.concat(action.eventId)
       }
     default:
       return state

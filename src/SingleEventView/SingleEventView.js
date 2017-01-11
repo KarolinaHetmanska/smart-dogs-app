@@ -37,7 +37,7 @@ const SingleEventView = props => {
                 </Col>
                 <Col sm={4}>
                   <button onClick={() => props.addPersonToFavorites(event.id)}>
-                    Add to favorites
+                    Dodaj do ulubionych
                   </button>
                   <br />
                   <hr />
