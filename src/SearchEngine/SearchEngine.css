@@ -1,11 +1,39 @@
 #chooseCategory, #chooseCity, #chooseDate {
-  width: 190px;
+  width: 193px;
+}
+
+#chooseCity {
   margin-right: 10px;
+  margin-left: 10px;
 }
-#chooseCategory {
-  margin-left: 15px;
-}
+
 .searchContainer {
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 80px;
+  text-align: center;
+}
+.search-form,
+.search-button{
+border: none;
+outline: none;
+}
+
+.search-form {
+  width: 88%;
+  padding: 10px;
+  border: 0;
+  border-right: 1px lightgrey solid;
+}
+
+.search-button {
+  width: 10%;
+  background-color: transparent;
+}
+
+.searchForm-wrapper {
+  width: 600px;
+  border-radius: 6px;
+  border: 1px solid lightgrey;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }

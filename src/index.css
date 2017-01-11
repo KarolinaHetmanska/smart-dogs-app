@@ -1,15 +1,24 @@
 body {
   margin: 0;
   padding-top: 100px;
-  font-family: sans-serif;
+  font-family: Raleway, sans-serif;
 }
-.navbar {
-  min-height: 90px;
+.navbar,
+.navbar-default,
+.navbar-inner{
+  min-height: 60px;
+  background: none;
 }
 .navbar-default .navbar-nav > li > a {
-  padding: 35px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: 16px;
 }
 .error-message {
   text-align: center;
+}
+
+.nav-logo {
+  float: left !important;
+  margin-top: -10px;
+  width: 140px;
 }
