@@ -1,10 +1,16 @@
 import React from 'react'
 import {SingleMapView} from '../MapView'
-import {events, places} from '../data'
+import { places } from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
 import './SingleEventview.css'
 
-export default (props) => {
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => ({
+  allEvents: state.eventsData.allEvents
+})
+
+const SingleEventView = props => {
 
   const placeOfEvent = places.find(
     place => place.events.indexOf(parseInt((props.params.eventId),10)) !== -1
@@ -13,7 +19,7 @@ export default (props) => {
   return (
     <Grid>
       {
-        events.filter(
+        props.allEvents.filter(
           event => event.id === parseInt((props.params.eventId),10)
         ).map(
           event =>
@@ -54,3 +60,5 @@ export default (props) => {
     </Grid>
   )
 }
+
+export default connect(mapStateToProps)(SingleEventView)
