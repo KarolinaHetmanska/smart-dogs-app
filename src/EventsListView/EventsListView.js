@@ -10,15 +10,14 @@ export default (props) => {
       {
         (props.events || events).map(event =>
           <Col xs={6} sm={3} key={event.id}>
-            <Link to={'/events/' + event.id}>
-              <Thumbnail bsClass="event-thumbnail" src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200">
+            <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
+              <div className="event-thumbnail">
+                <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200" />
                 <h3 className="cardheader">{event.name}</h3>
+                <p><span>{event.hour}.00 | </span>{event.date}</p>
+                <p>{event.price} PLN<span className="thumbnail-category">{event.category}</span></p>
 
-                <p>
-                  <Button bsStyle="primary">{event.price} PLN</Button>&nbsp;
-                  <Button bsStyle="default">{event.date}</Button>
-                </p>
-              </Thumbnail>
+              </div>
             </Link>
           </Col>
         )

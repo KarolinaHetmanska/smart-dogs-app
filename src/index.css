@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Raleway&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
 
 body {
   margin: 0;
