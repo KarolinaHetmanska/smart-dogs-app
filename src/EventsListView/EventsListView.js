@@ -1,14 +1,19 @@
 import React from 'react'
 import {Col, Thumbnail, Button} from 'react-bootstrap'
 import {Link} from 'react-router'
-import {events} from '../data'
 import './EventsListView.css'
 
-export default (props) => {
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => ({
+  allEvents: state.eventsData.allEvents
+})
+
+const EventsListView = props => {
   return (
     <div>
       {
-        (props.events || events).map(event =>
+        (props.events || props.allEvents).map(event =>
           <Col xs={6} sm={3} key={event.id}>
             <div className="event-thumbnail">
               <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
@@ -34,4 +39,4 @@ export default (props) => {
 
   )
 }
-
+export default connect(mapStateToProps)(EventsListView)
