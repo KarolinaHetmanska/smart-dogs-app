@@ -15,7 +15,7 @@ import {
 import './App.css';
 
 export default (props) => (
-  <Grid>
+  <Grid fluid>
     <Navbar collapseOnSelect fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
