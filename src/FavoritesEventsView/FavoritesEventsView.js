@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Grid,
   Button,
   Thumbnail,
   Col,
@@ -23,35 +24,37 @@ const FavoritesEventsView = props => {
   )
 
   return (
-    < div >
-      <br />
-      <br />
-      <h1>Lista ulubionych wydarzeń</h1>
-      <br />
-      {
-        eventsToDisplay.map(event =>
-          <Col xs={6} sm={3} key={event.id}>
-            <Link to={'/events/' + event.id}>
-              <Thumbnail bsClass="event-thumbnail" src={process.env.PUBLIC_URL + '/img/events/' + event.image}
-                         alt="242x200">
-                <h3 className="cardheader">{event.name}</h3>
+    <Grid>
+      < div >
+        <br />
+        <br />
+        <h1>Lista ulubionych wydarzeń</h1>
+        <br />
+        {
+          eventsToDisplay.map(event =>
+            <Col xs={6} sm={3} key={event.id}>
+              <Link to={'/events/' + event.id}>
+                <Thumbnail bsClass="event-thumbnail" src={process.env.PUBLIC_URL + '/img/events/' + event.image}
+                           alt="242x200">
+                  <h3 className="cardheader">{event.name}</h3>
 
-                <p>
-                  <Button bsStyle="primary">{event.price} PLN</Button>&nbsp;
-                  <Button bsStyle="default">{event.date}</Button>
-                </p>
-              </Thumbnail>
-            </Link>
+                  <p>
+                    <Button bsStyle="primary">{event.price} PLN</Button>&nbsp;
+                    <Button bsStyle="default">{event.date}</Button>
+                  </p>
+                </Thumbnail>
+              </Link>
+            </Col>
+          )
+
+        }
+        <Row>
+          <Col sm={6} smOffset={2}>
+            <MultiMapView searchedEvents={eventsToDisplay}/>
           </Col>
-        )
-
-      }
-      <Row>
-        <Col sm={6} smOffset={2}>
-          <MultiMapView searchedEvents={eventsToDisplay}/>
-        </Col>
-      </Row>
-    </div>
+        </Row>
+      </div>
+    </Grid>
   )
 }
 
