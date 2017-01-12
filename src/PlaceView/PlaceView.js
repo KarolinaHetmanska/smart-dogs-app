@@ -1,30 +1,38 @@
 import React from 'react'
-import { places } from '../data'
-import { Thumbnail } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import {places} from '../data'
+import {Thumbnail, Row, Col} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {SingleMapView} from '../MapView'
 
-const mapStateToProps = state => ({
-  onePlace: state.placeData.onePlace
-})
+// const mapStateToProps = state => ({
+//   onePlace: state.placeData.onePlace
+// })
 
 const PlaceView = (props) =>
+
   <div>
-    <h1>Miejsca Wydarzeń</h1>
-    <br />
+    <h1>One place view</h1>
     <div>
       {
-        places.map(place =>
-          <Thumbnail src={process.env.PUBLIC_URL + '/img/places/' + place.image} alt="242x200">
-            <h3 className="cardheader">{place.name}</h3>
-            <div key={place.id}>
-              <p> {place.city} ul.{place.address} </p>
-            </div>
-          </Thumbnail>
+        places.filter(place =>
+          place.id === parseInt(props.params.placeId)
+        ).map(place =>
+          <div className="singleEvent-container" key={place.id}>
+            <Row>
+              <Col sm={4} smOffset={2}>
+                <img className="event-img" role="presentation"
+                     src={process.env.PUBLIC_URL + '/img/places/' + place.image}/>
+              </Col>
+              <Col sm={4}>
+                <h1 className="event-name">{place.name}</h1>
+              </Col>
+            </Row>
+            <Row>
+            </Row>
+          </div>
         )
       }
     </div>
-    {props.children}
-
   </div>
 
-export default connect(mapStateToProps)(PlaceView)
+export default PlaceView

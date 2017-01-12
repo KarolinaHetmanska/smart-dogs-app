@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 
 import store from './store'
 
+import {PlacesView} from './PlacesView'
 import {PlaceView} from './PlaceView'
 import {App} from './App';
 import {NotFoundView} from './NotFoundView';
@@ -24,7 +25,8 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={SearchEngine}/>
 
-        <Route path="/place" component={PlaceView}>
+        <Route path="/places" component={PlacesView}>
+          <Route path="/places/:placeId" component={PlaceView}/>
         </Route>
 
         <Route path="/events" component={EventsView} />
