@@ -3,10 +3,11 @@ import persistState from 'redux-localstorage'
 import thunkMiddleware from 'redux-thunk'
 
 import { reducer as favoritesEventsReducer } from './SingleEventView'
-import { reducer as eventsReducer } from './EventsListView'
+
+import allEventsReducer from './state/events/reducer'
 
 const reducer = combineReducers({
-  eventsData: eventsReducer,
+  allEventsData: allEventsReducer,
   favoritesData:favoritesEventsReducer
 
 })

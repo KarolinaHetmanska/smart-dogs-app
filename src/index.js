@@ -19,18 +19,22 @@ import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css';
 
+import { fetchEvents } from './state/events/actionCreators'
+
+const fetchEventsOnEnter = () => store.dispatch(fetchEvents())
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={SearchEngine}/>
+        <IndexRoute component={SearchEngine}  />
 
         <Route path="/places" component={PlacesView}>
           <Route path="/places/:placeId" component={PlaceView}/>
         </Route>
 
-        <Route path="/events" component={EventsView} />
-        <Route path="/events/:eventId" component={SingleEventView}/>
+        <Route path="/events" component={EventsView}  onEnter={fetchEventsOnEnter}/>
+        <Route path="/events/:eventId" component={SingleEventView} />
 
         <Route path="/eventslist" component={EventsListView} />
 

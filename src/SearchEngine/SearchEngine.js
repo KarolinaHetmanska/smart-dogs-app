@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {events} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row, Grid} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
@@ -6,11 +7,14 @@ import {MultiMapView} from '../MapView'
 import './SearchEngine.css'
 
 
-export default class SearchEngine extends React.Component {
+
+
+class SearchEngine extends React.Component {
+
   constructor() {
     super()
 
-    this.handleSubmit = (event) => {
+      this.handleSubmit = (event) => {
       const search = this.state.search.toLowerCase()
       event.preventDefault()
       if (this.state.search === '') {
@@ -197,3 +201,4 @@ export default class SearchEngine extends React.Component {
   }
 
 }
+export default SearchEngine

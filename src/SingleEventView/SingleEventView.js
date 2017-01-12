@@ -7,7 +7,7 @@ import './SingleEventview.css'
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => ({
-  allEvents: state.eventsData.allEvents,
+  allEvents: state.allEventsData.allEvents,
   favoriteEvents: state.favoritesData.favoritesEvents
 })
 

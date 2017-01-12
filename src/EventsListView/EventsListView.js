@@ -8,7 +8,7 @@ import './EventsListView.css'
 import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
-  allEvents: state.eventsData.allEvents
+  allEvents: state.allEventsData.allEvents
 })
 
 // <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
