@@ -27,7 +27,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={SearchEngine}  />
+        <IndexRoute component={SearchEngine} onEnter={fetchEventsOnEnter}/>
 
         <Route path="/places" component={PlacesView}>
           <Route path="/places/:placeId" component={PlaceView}/>

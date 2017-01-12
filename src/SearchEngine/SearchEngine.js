@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {events} from '../data'
+// import {events} from '../data'
 import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row, Grid} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
 import {MultiMapView} from '../MapView'
 import './SearchEngine.css'
 
-
+const mapStateToProps = state => ({
+  allEvents: state.allEventsData.allEvents
+})
 
 
 class SearchEngine extends React.Component {
@@ -21,7 +23,7 @@ class SearchEngine extends React.Component {
         return
       }
 
-      const foundEvents = events.filter(
+      const foundEvents = this.props.allEvents.filter(
         event => (
           event.name.toLowerCase().includes(search) ||
           event.category.toLowerCase().includes(search) ||
@@ -47,12 +49,12 @@ class SearchEngine extends React.Component {
       })
       if (eventKey === 'wszystko') {
         this.setState({
-          found: events,
+          found: this.props.allEvents,
           chosenCategory: eventKey
         })
       } else {
         this.setState({
-          found: events.filter(
+          found: this.props.allEvents.filter(
             event => event.category === eventKey
           ),
           chosenCategory: eventKey
@@ -67,14 +69,14 @@ class SearchEngine extends React.Component {
       })
       if (eventKey === 'Cale') {
         this.setState({
-          found: events,
+          found: this.props.allEvents,
           chosenPlace: eventKey,
           errorMessage: false
         })
       } else {
         console.log(eventKey);
         this.setState({
-          found: events.filter(
+          found: this.props.allEvents.filter(
             event => event.city === eventKey
           ),
           chosenPlace: eventKey
@@ -85,7 +87,7 @@ class SearchEngine extends React.Component {
     this.handleDropdownTime = (eventKey, event) => {
       let chosenTimeFrame = (new Date().getTime() + eventKey)
       this.setState({
-        found: events.filter(
+        found: this.props.allEvents.filter(
           event => new Date(event.date).getTime() < chosenTimeFrame
         ),
         chosenTime: event.target.textContent,
@@ -180,7 +182,7 @@ class SearchEngine extends React.Component {
               <br />
 
               <ul>
-                <EventsListView events={this.state.found.length !== 0 ? this.state.found : events.sort(
+                <EventsListView events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                   (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
                 ).slice(0, 8)}/>
 
@@ -189,7 +191,7 @@ class SearchEngine extends React.Component {
           </Row>
           <Row>
             <Col>
-              <MultiMapView searchedEvents={this.state.found.length !== 0 ? this.state.found : events.sort(
+              <MultiMapView searchedEvents={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                 (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
               ).slice(0, 8)}/>
             </Col>
@@ -201,4 +203,4 @@ class SearchEngine extends React.Component {
   }
 
 }
-export default SearchEngine
+export default connect (mapStateToProps)(SearchEngine)
