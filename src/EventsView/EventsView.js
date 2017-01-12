@@ -1,19 +1,16 @@
 import React from 'react'
+import {Grid} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
-
-import './EventsView.css';
-
-// <div style={{backgroundImage: 'url(' + (process.env.PUBLIC_URL + '/img/' + event.image) + ')'}}/>
 
 export default (props) => {
   return (
-    <div>
+    <Grid>
       <div>
         <h1>Lista wydarzeń</h1>
         <br />
         <EventsListView />
       </div>
       {props.children}
-    </div>
+    </Grid>
   )
 }
