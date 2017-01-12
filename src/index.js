@@ -13,6 +13,7 @@ import {EventsView} from './EventsView';
 import {EventsListView} from './EventsListView';
 import {SingleEventView} from './SingleEventView';
 import {SearchEngine} from './SearchEngine';
+import {FavoritesEventsView} from './FavoritesEventsView';
 
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -33,6 +34,7 @@ ReactDOM.render(
 
         <Route path="/eventslist" component={EventsListView} />
 
+        <Route path="/favorites" component={FavoritesEventsView} />
 
         <Route path="*" component={NotFoundView}/>
       </Route>

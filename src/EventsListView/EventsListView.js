@@ -1,7 +1,6 @@
 import React from 'react'
 import {Col, Thumbnail, Button} from 'react-bootstrap'
 import {Link} from 'react-router'
-//import {events} from '../data'
 import './EventsListView.css'
 
 import { connect } from 'react-redux'
