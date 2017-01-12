@@ -26,7 +26,7 @@ const FavoritesEventsView = props => {
     < div >
       <br />
       <br />
-      <h1>Lista ulubionyc wydarzeń</h1>
+      <h1>Lista ulubionych wydarzeń</h1>
       <br />
       {
         eventsToDisplay.map(event =>
