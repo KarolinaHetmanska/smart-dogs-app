@@ -1,15 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
+
 body {
   margin: 0;
-  padding-top: 100px;
-  font-family: sans-serif;
+  padding-top: 60px;
+  font-family: Raleway, sans-serif;
 }
-.navbar {
-  min-height: 90px;
+.navbar,
+.navbar-default,
+.navbar-inner{
+  min-height: 60px;
+  background: none;
+  background-color: white;
+  box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.1);
 }
 .navbar-default .navbar-nav > li > a {
-  padding: 35px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: 16px;
 }
 .error-message {
   text-align: center;
+}
+
+.nav-logo {
+  float: left !important;
+  margin-top: -10px;
+  width: 140px;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.row {
+  margin-right: -30px;
+  margin-left: -15px;
+}
+.event-thumbnail{
+  background-color: white;
+  color: #4b4c4f;
+  font-family: sans-serif;
+  position:relative;
+  padding: 0;
+  border-radius: 5px;
+}
+.event-thumbnail > img, .event-thumbnail a > img{
+  margin: 0px;
+  max-height: 200px;
+  min-width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }

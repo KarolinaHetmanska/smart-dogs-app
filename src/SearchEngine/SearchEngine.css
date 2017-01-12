@@ -1,11 +1,67 @@
-#chooseCategory, #chooseCity, #chooseDate {
-  width: 190px;
+#select-category, #select-city, #select-date {
+  width: 193px;
+}
+
+#select-city {
   margin-right: 10px;
+  margin-left: 10px;
 }
-#chooseCategory {
-  margin-left: 15px;
+
+.search-container {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  text-align: center;
 }
-.searchContainer {
-  margin-top: 60px;
-  margin-bottom: 80px;
+
+.search-form,
+.search-button {
+  border: none;
+  outline: none;
 }
+
+.search-form {
+  width: 88%;
+  padding: 10px;
+  border: 0;
+  border-right: 1px lightgrey solid;
+}
+
+.search-button {
+  width: 10%;
+  background-color: transparent;
+  font-size: 22px;
+  color: grey;
+}
+.glyphicon-search {
+  vertical-align: middle;
+}
+
+.search-form-wrapper {
+  width: 600px;
+  border-radius: 6px;
+  border: 1px solid lightgrey;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.search-background {
+  background-image: url('../../public/img/gdansk.jpg');
+  background-position-y: -340px;
+  opacity: 0.9;
+  width: 100%;
+}
+.caption-main,
+.caption-submain{
+  color: white;
+  font-weight: bold;
+  text-shadow: #333333 0px 0px 3px;
+}
+.caption-main {
+  font-size: 64px;
+}
+
+.caption-submain {
+  font-size: 30px;
+}
+
