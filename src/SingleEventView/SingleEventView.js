@@ -1,10 +1,23 @@
 import React from 'react'
 import {SingleMapView} from '../MapView'
-import {events, places} from '../data'
+import { places } from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
 import './SingleEventview.css'
 
-export default (props) => {
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => ({
+  allEvents: state.eventsData.allEvents
+})
+
+const mapDispatchProps = dispatch => ({
+   addPersonToFavorites: (eventId) => dispatch({
+    type: 'ADD_EVENT_TO_FAVORITES',
+    eventId: eventId
+  })
+})
+
+const SingleEventView = props => {
 
   const placeOfEvent = places.find(
     place => place.events.indexOf(parseInt((props.params.eventId),10)) !== -1
@@ -13,7 +26,7 @@ export default (props) => {
   return (
     <Grid>
       {
-        events.filter(
+        props.allEvents.filter(
           event => event.id === parseInt((props.params.eventId),10)
         ).map(
           event =>
@@ -23,6 +36,11 @@ export default (props) => {
                   <img className="event-img" role="presentation" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
+                  <button onClick={() => props.addPersonToFavorites(event.id)}>
+                    Dodaj do ulubionych
+                  </button>
+                  <br />
+                  <hr />
                   <h1 className="event-name">{event.name}</h1>
                   <p>Data: {event.date}</p>
                   <p>Kategoria: {event.category}</p>
@@ -54,3 +72,5 @@ export default (props) => {
     </Grid>
   )
 }
+
+export default connect(mapStateToProps, mapDispatchProps)(SingleEventView)
