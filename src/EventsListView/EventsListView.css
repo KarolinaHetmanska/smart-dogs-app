@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
 
 .event-thumbnail{
-  background-color: white;
+  background-color: #f7f8f9;
   color: #4b4c4f;
   font-family: sans-serif;
   position:relative;
@@ -43,13 +43,17 @@
   border-radius: 2px;
   position: relative;
   top: -12px;
+  color: white;
 }
 
 .thumbnail-price {
   padding: 10px;
-  background-color: darkgrey;
-  color: white;
+  font-weight: 500;
   border-radius: 2px;
+  padding: 10px;
+  border: 2px solid darkgrey;
+  color: grey;
+  font-family: Roboto, sans-serif;
 }
 .add-to-favorites-toggle-button {
   background-color: #fd5d1d;
