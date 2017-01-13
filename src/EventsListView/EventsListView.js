@@ -1,13 +1,17 @@
 import React from 'react'
-import {Col, Thumbnail, Button} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
+import moment from 'moment'
+import 'moment/locale/pl';
 import {Link} from 'react-router'
 import './EventsListView.css'
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
-  allEvents: state.eventsData.allEvents
+  allEvents: state.allEventsData.allEvents
 })
+
+// <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
 
 const EventsListView = props => {
   return (
@@ -18,13 +22,15 @@ const EventsListView = props => {
             <div className="event-thumbnail">
               <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
 
-                <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
+                <div className="thumbnail-image"
+                     style={{backgroundImage: "url(" + process.env.PUBLIC_URL + '/img/events/' + event.image + ")"}}></div>
                 <h3 className="thumbnail-cardheader">{event.name}</h3>
               </Link>
               <div className="thumbnail-details">
-                <span className="add-to-favorites-toggle-button"><span
-                className="glyphicon glyphicon-heart-empty"></span> Zapisz</span>
-                <p><span className="glyphicon glyphicon-list-alt"></span><span> {event.hour}.00 | </span>{event.date}
+                <span className="add-to-favorites-toggle-button">
+                  <span className="glyphicon glyphicon-heart-empty"></span> Zapisz
+                </span>
+                <p><span className="glyphicon glyphicon-list-alt"></span><span> {event.hour}.00 | </span>{moment(event.date).format('dddd, LL').charAt(0).toUpperCase() + moment(event.date).format('dddd, LL').slice(1)}
                 </p>
                 <p><span className="glyphicon glyphicon-map-marker"></span> {event.city}</p>
                 <br />

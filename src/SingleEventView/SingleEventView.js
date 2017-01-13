@@ -7,12 +7,17 @@ import './SingleEventview.css'
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => ({
-  allEvents: state.eventsData.allEvents
+  allEvents: state.allEventsData.allEvents,
+  favoriteEvents: state.favoritesData.favoritesEvents
 })
 
 const mapDispatchProps = dispatch => ({
-   addPersonToFavorites: (eventId) => dispatch({
+   addEventToFavorites: (eventId) => dispatch({
     type: 'ADD_EVENT_TO_FAVORITES',
+    eventId: eventId
+  }),
+  removeEventFromFavorites: (eventId) => dispatch({
+    type: 'REMOVE_EVENT_FROM_FAVORITES',
     eventId: eventId
   })
 })
@@ -36,9 +41,15 @@ const SingleEventView = props => {
                   <img className="event-img" role="presentation" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
-                  <button onClick={() => props.addPersonToFavorites(event.id)}>
-                    Dodaj do ulubionych
-                  </button>
+                  {
+                    props.favoriteEvents.indexOf(event.id) !== -1 ?
+                      <button onClick={() => props.removeEventFromFavorites(event.id)}>
+                       Usuń z ulubionych
+                      </button> :
+                      <button onClick={() => props.addEventToFavorites(event.id)}>
+                        Dodaj do ulubionch
+                      </button>
+                  }
                   <br />
                   <hr />
                   <h1 className="event-name">{event.name}</h1>

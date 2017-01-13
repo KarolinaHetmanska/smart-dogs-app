@@ -9,6 +9,14 @@ export default (state = initialState, action) => {
         ...state,
         favoritesEvents: state.favoritesEvents.indexOf(action.eventId) !== -1 ? state.favoritesEvents : state.favoritesEvents.concat(action.eventId)
       }
+    case 'REMOVE_EVENT_FROM_FAVORITES':
+      return {
+        ...state,
+        favoritesEvents: state.favoritesEvents.filter(
+          favEventId =>
+          favEventId !== action.eventId
+        )
+      }
     default:
       return state
   }
