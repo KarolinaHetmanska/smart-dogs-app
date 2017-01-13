@@ -14,6 +14,11 @@ const mapStateToProps = state => ({
 // <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
 
 const EventsListView = props => {
+  const setup = {
+    'musical': '#0d3fd8',
+    'spektakl': '#0c7a1a',
+    'koncert': '#f74a4a'
+  }
   return (
     <div>
       {
@@ -35,7 +40,9 @@ const EventsListView = props => {
                 <p><span className="glyphicon glyphicon-map-marker"></span> {event.city}</p>
                 <br />
                 <p><span className="thumbnail-price">{event.price} PLN</span><span
-                  className="thumbnail-category">{event.category}</span></p>
+                  className="thumbnail-category" style={{
+                    backgroundColor: setup[event.category] || '#75767a'
+                }}>{event.category}</span></p>
               </div>
             </div>
           </Col>

@@ -25,7 +25,8 @@ export default (props) => {
         {
           placesOfEvents.map(
             place =>
-              <PlaceMarker lat={place.lat}
+              <PlaceMarker key={place.id}
+                           lat={place.lat}
                            lng={place.lng}
                            text={place.name}> </PlaceMarker>
           )
