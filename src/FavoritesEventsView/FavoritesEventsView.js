@@ -14,7 +14,7 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
   favoritesEvents: state.favoritesData.favoritesEvents,
-  allEvents: state.eventsData.allEvents
+  allEvents: state.allEventsData.allEvents
 })
 
 const FavoritesEventsView = props => {
