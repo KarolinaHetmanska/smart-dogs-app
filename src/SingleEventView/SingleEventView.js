@@ -80,7 +80,7 @@ const SingleEventView = props => {
                 </Row>
               </div>
             )
-          }
+          },
 
           event =>
             <div className="singleEvent-container" key={event.id}>
