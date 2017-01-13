@@ -28,6 +28,9 @@ const PlaceView = (props) =>
               </Col>
             </Row>
             <Row>
+              <Col sm={6} smOffset={2}>
+                <SingleMapView placeOfEvent={place}/>
+              </Col>
             </Row>
           </div>
         )
