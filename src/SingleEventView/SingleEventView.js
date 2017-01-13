@@ -68,7 +68,7 @@ const SingleEventView = props => {
                   <h5>{placeOfEvent.city}, {placeOfEvent.address}</h5>
                   <br />
                   <br />
-                  <span className="event-price">{event.price} PLN</span><span>&#160;&#160;&#160;</span>
+                  <span className="event-price">{event.price} PLN</span><span>&#160;&#160;&#160; </span>
                   <span className="event-category" style={{
                     backgroundColor: setup[event.category] || '#75767a'
                   }}>{event.category}</span>
