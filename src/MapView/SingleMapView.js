@@ -5,9 +5,7 @@ import {places} from '../data'
 
 export default (props) => {
 
-  const placeOfEvent = places.find(
-    place => place.events.indexOf(parseInt((props.event),10)) !== -1
-    )
+  const placeOfEvent = props.placeOfEvent
 
   return (
     <div style={{height: 400, width: 800}}>

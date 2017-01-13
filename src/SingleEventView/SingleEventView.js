@@ -73,8 +73,7 @@ const SingleEventView = props => {
               <br/>
               <Row>
                 <Col sm={6} smOffset={2}>
-                  <SingleMapView event={props.params.eventId}/>
-                  {console.log(props.params.eventId)}
+                  <SingleMapView placeOfEvent={placeOfEvent}/>
                 </Col>
               </Row>
             </div>

@@ -40,7 +40,7 @@ const EventsListView = props => {
             </div>
           </Col>
         )
-      }
+                                               }
     </div>
 
   )
