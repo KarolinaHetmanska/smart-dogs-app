@@ -1,18 +1,18 @@
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
+import {compose, createStore, combineReducers, applyMiddleware} from 'redux'
 import persistState from 'redux-localstorage'
 import thunkMiddleware from 'redux-thunk'
 
-import { reducer as favoritesEventsReducer } from './SingleEventView'
+import {reducer as favoritesEventsReducer} from './SingleEventView'
 
 import allEventsReducer from './state/events/reducer'
-import { reducer as eventsReducer } from './EventsListView'
-import { reducer as placeReducer } from './PlaceView'
+// import { reducer as eventsReducer } from './EventsListView'
+import {reducer as placeReducer} from './PlaceView'
 
 const reducer = combineReducers({
   allEventsData: allEventsReducer,
-  eventsData: eventsReducer,
+  // eventsData: eventsReducer,
   placeData: placeReducer,
-  favoritesData:favoritesEventsReducer
+  favoritesData: favoritesEventsReducer
 
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
