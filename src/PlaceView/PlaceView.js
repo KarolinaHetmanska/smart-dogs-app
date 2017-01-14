@@ -1,7 +1,6 @@
 import React from 'react'
 import {places} from '../data'
-import {Thumbnail, Row, Col} from 'react-bootstrap'
-import {connect} from 'react-redux'
+import { Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 
 // const mapStateToProps = state => ({
