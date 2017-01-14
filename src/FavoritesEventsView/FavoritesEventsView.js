@@ -7,7 +7,7 @@ import {
 
 
 import {MultiMapView} from '../MapView'
-import {FavoritesListView} from '../FavoritesListView'
+import {EventsListView} from '../EventsListView'
 
 import {connect} from 'react-redux'
 
@@ -29,7 +29,7 @@ const FavoritesEventsView = props => {
           <br />
           <h1>Twoje ulubione wydarzenia.</h1>
           <br />
-          <FavoritesListView events={eventsToDisplay}/>
+          <EventsListView events={eventsToDisplay}/>
           <Row>
             <Col sm={10} smOffset={1}>
               <MultiMapView searchedEvents={eventsToDisplay}/>
@@ -46,7 +46,7 @@ const FavoritesEventsView = props => {
           <br />
           <h1>Twoje ulubione wydarzenia.</h1>
           <br />
-          <h2> Nie masz żadnych wydarzeń dodanych do ulubionych.</h2>
+          <h2> Nie masz żadnych wydarzeń dodanych do folderu ulubione.</h2>
         </div>
       </Grid>
     )

@@ -8,12 +8,22 @@ import './EventsListView.css'
 import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
-  allEvents: state.allEventsData.allEvents
+  allEvents: state.allEventsData.allEvents,
+  favoriteEvents: state.favoritesData.favoritesEvents
 })
 
 // <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
 
-
+const mapDispatchProps = dispatch => ({
+  addEventToFavorites: (eventId) => dispatch({
+    type: 'ADD_EVENT_TO_FAVORITES',
+    eventId: eventId
+  }),
+  removeEventFromFavorites: (eventId) => dispatch({
+    type: 'REMOVE_EVENT_FROM_FAVORITES',
+    eventId: eventId
+  })
+})
 
 const EventsListView = props => {
   return (
@@ -29,10 +39,17 @@ const EventsListView = props => {
               </Link>
 
               <div className="thumbnail-details">
-                <span className="add-to-favorites-toggle-button">
-                  <span className="glyphicon glyphicon-heart-empty"/> Zapisz
-                </span>
+                {
+                   props.favoriteEvents.indexOf(event.id) !== -1 ?
 
+                  <span className="add-to-favorites-toggle-button" onClick={() => props.removeEventFromFavorites(event.id)}>
+                    <span className="glyphicon glyphicon-heart"/> Usuń
+                  </span> :
+
+                  <span className="add-to-favorites-toggle-button" onClick={() => props.addEventToFavorites(event.id)}>
+                    <span className="glyphicon glyphicon-heart-empty"/> Zapisz
+                  </span>
+                }
                 <p><span
                   className="glyphicon glyphicon-list-alt"/><span> {event.hour}.00 | </span>{moment(event.date).format('dddd, LL').charAt(0).toUpperCase() + moment(event.date).format('dddd, LL').slice(1)}
                 </p>
@@ -49,4 +66,4 @@ const EventsListView = props => {
 
   )
 }
-export default connect(mapStateToProps)(EventsListView)
+export default connect(mapStateToProps, mapDispatchProps)(EventsListView)

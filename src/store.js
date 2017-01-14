@@ -19,7 +19,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(
     thunkMiddleware
   ),
-  persistState([], { key: 'smartdogs-v1' })
+  persistState([ 'favoritesData' ], { key: 'smartdogs-v1' })
 )
 
 const store = createStore(reducer, enhancer);
