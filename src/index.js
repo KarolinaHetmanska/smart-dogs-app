@@ -33,7 +33,7 @@ ReactDOM.render(
           <Route path="/places/:placeId" component={PlaceView}/>
         </Route>
 
-        <Route path="/events" component={EventsView}  />
+        <Route onEnter={() => window.scrollTo(0, 0)} path="/events" component={EventsView}  />
         <Route path="/events/:eventId" component={SingleEventView} />
 
         <Route path="/eventslist" component={EventsListView} />

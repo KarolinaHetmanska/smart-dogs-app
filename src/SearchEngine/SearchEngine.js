@@ -1,8 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {Col, DropdownButton, MenuItem, Row, Grid} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
 import {MultiMapView} from '../MapView'
+import {Link} from 'react-router'
 import './SearchEngine.css'
 
 const mapStateToProps = state => ({
@@ -15,7 +16,7 @@ class SearchEngine extends React.Component {
   constructor() {
     super()
 
-      this.handleSubmit = (event) => {
+    this.handleSubmit = (event) => {
       const search = this.state.search.toLowerCase()
       event.preventDefault()
       if (this.state.search === '') {
@@ -133,7 +134,8 @@ class SearchEngine extends React.Component {
                              })
                            }
                     />
-                    <button type="submit" className="search-button"><span className="glyphicon glyphicon-search"></span></button>
+                    <button type="submit" className="search-button"><span className="glyphicon glyphicon-search"></span>
+                    </button>
                   </div>
                 </Col>
               </Row>
@@ -174,7 +176,7 @@ class SearchEngine extends React.Component {
 
         <Grid>
           <Row>
-            <Col>
+            <Col className="shift-more-left">
               <h3
                 className="error-message">{this.state.found.length !== 0 ? 'Najbliższe wydarzenia dla "' + (this.state.search || this.state.chosenCategory || this.state.chosenPlace || this.chosenTime) + '"' : this.state.errorMessage}</h3>
               <br />
@@ -189,10 +191,19 @@ class SearchEngine extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <MultiMapView searchedEvents={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
-                (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
-              ).slice(0, 8)}/>
+            <div className="see-more-link-container">
+              <Link className="see-more-link" to="/events">
+                <h3 className="see-more-link-caption">Zobacz więcej wydarzeń <span className="glyphicon glyphicon-menu-right"></span></h3>
+              </Link>
+            </div>
+            <br/>
+          </Row>
+          <Row>
+            <Col className="shift-left">
+              <MultiMapView
+                searchedEvents={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
+                  (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
+                ).slice(0, 8)}/>
             </Col>
           </Row>
         </Grid>
@@ -202,4 +213,4 @@ class SearchEngine extends React.Component {
   }
 
 }
-export default connect (mapStateToProps)(SearchEngine)
+export default connect(mapStateToProps)(SearchEngine)

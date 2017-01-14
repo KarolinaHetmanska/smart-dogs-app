@@ -1,4 +1,4 @@
-.singleEvent-container {
+.single-event-container {
   margin-top: 40px;
 }
 .event-img{
@@ -34,4 +34,7 @@
 }
 .event-description-container{
   margin: 20px;
+}
+.event-details{
+  margin-left: 20px;
 }
