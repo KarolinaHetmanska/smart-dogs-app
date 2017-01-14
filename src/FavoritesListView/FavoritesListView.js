@@ -3,21 +3,14 @@ import {Col} from 'react-bootstrap'
 import moment from 'moment'
 import 'moment/locale/pl';
 import {Link} from 'react-router'
-import './EventsListView.css'
+import './FavoritesListView.css'
 
-import {connect} from 'react-redux'
 
-const mapStateToProps = state => ({
-  allEvents: state.allEventsData.allEvents
-})
-
-// <img src={process.env.PUBLIC_URL + '/img/events/' + event.image} alt="242x200"/>
-
-const EventsListView = props => {
+const FavoritesListView = props => {
   return (
     <div>
       {
-        (props.events || props.allEvents).map(event =>
+        (props.events).map(event =>
           <Col xs={6} sm={3} key={event.id}>
             <div className="event-thumbnail">
               <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
@@ -40,9 +33,9 @@ const EventsListView = props => {
             </div>
           </Col>
         )
-                                               }
+      }
     </div>
 
   )
 }
-export default connect(mapStateToProps)(EventsListView)
+export default FavoritesListView

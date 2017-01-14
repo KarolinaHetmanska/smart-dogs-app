@@ -1,7 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import PlaceMarker from './PlaceMarker'
-import {places} from '../data'
 
 export default (props) => {
 

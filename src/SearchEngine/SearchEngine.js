@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {FormGroup, FormControl, Col, Button, DropdownButton, MenuItem, Row, Grid} from 'react-bootstrap'
+import { Col, DropdownButton, MenuItem, Row, Grid} from 'react-bootstrap'
 import {EventsListView} from '../EventsListView'
 import {MultiMapView} from '../MapView'
 import './SearchEngine.css'
