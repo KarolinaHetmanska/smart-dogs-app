@@ -24,18 +24,17 @@ const FavoritesEventsView = props => {
   if (props.favoritesEvents.length > 0) {
     return (
       <Grid>
-        < div >
+        <Row>
           <br />
           <br />
-          <h1>Twoje ulubione wydarzenia.</h1>
+          <h1>Twoje ulubione wydarzenia</h1>
           <br />
           <EventsListView events={eventsToDisplay}/>
-          <Row>
-            <Col sm={10} smOffset={1}>
-              <MultiMapView searchedEvents={eventsToDisplay}/>
-            </Col>
-          </Row>
-        </div>
+        </Row>
+        <Row>
+            <MultiMapView searchedEvents={eventsToDisplay}/>
+        </Row>
+
       </Grid>
     )
   } else {
@@ -44,9 +43,9 @@ const FavoritesEventsView = props => {
         < div >
           <br />
           <br />
-          <h1>Twoje ulubione wydarzenia.</h1>
+          <h1>Twoje ulubione wydarzenia</h1>
           <br />
-          <h2> Nie masz żadnych wydarzeń dodanych do folderu ulubione.</h2>
+          <h2> Nie masz żadnych wydarzeń dodanych do folderu ulubione</h2>
         </div>
       </Grid>
     )
