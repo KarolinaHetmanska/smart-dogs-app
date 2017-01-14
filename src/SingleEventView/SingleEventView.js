@@ -63,7 +63,7 @@ const SingleEventView = props => {
                   <h1 className="event-name">{event.name}</h1>
                   <h4 className="event-date">{event.hour}.00
                     | {moment(event.date).format('dddd, LL').charAt(0).toUpperCase() + moment(event.date).format('dddd, LL').slice(1)}</h4>
-                  <h3>Miejsce:</h3>
+                  <br />
                   <h4>{placeOfEvent.name}</h4>
                   <h5>{placeOfEvent.city}, {placeOfEvent.address}</h5>
                   <br />
@@ -87,7 +87,7 @@ const SingleEventView = props => {
               <br/>
               <br/>
               <Row>
-                <Col sm={6} smOffset={2}>
+                <Col sm={8} smOffset={2}>
                   <SingleMapView placeOfEvent={placeOfEvent}/>
                 </Col>
               </Row>

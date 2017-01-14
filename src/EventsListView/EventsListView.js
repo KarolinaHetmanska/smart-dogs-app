@@ -23,7 +23,7 @@ const EventsListView = props => {
     <div>
       {
         (props.events || props.allEvents).map(event =>
-          <Col xs={6} sm={3} key={event.id}>
+          <Col sm={6} md={3} key={event.id}>
             <div className="event-thumbnail">
               <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
 
@@ -35,7 +35,9 @@ const EventsListView = props => {
                 <span className="add-to-favorites-toggle-button">
                   <span className="glyphicon glyphicon-heart-empty"></span> Zapisz
                 </span>
-                <p><span className="glyphicon glyphicon-list-alt"></span><span> {event.hour}.00 | </span>{moment(event.date).format('dddd, LL').charAt(0).toUpperCase() + moment(event.date).format('dddd, LL').slice(1)}
+                <p>
+                  <span className="glyphicon glyphicon-list-alt"></span>
+                  <span className="thumbnail-date"><span> {event.hour}.00 | </span>{moment(event.date).format('dddd, LL').charAt(0).toUpperCase() + moment(event.date).format('dddd, LL').slice(1)}</span>
                 </p>
                 <p><span className="glyphicon glyphicon-map-marker"></span> {event.city}</p>
                 <br />

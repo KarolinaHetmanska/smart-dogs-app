@@ -1,3 +1,11 @@
+.shift-left{
+  margin-left: -15px;
+}
+.shift-more-left{
+  margin-left: -40px;
+}
+
+
 #select-category, #select-city, #select-date {
   width: 193px;
 }

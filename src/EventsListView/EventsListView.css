@@ -4,12 +4,13 @@
 .event-thumbnail{
   background-color: #f7f8f9;
   color: #4b4c4f;
-  font-family: sans-serif;
   position:relative;
   padding: 0;
   border-radius: 5px;
   border: 1px solid #e5e7ea;
   margin-bottom: 40px;
+  font-family: Roboto, sans-serif;
+  margin-left: 10px;
 }
 .thumbnail-image {
   border-top-left-radius: 5px;
@@ -19,7 +20,7 @@
   background-position: center center;
 }
 
-.event-thumbnail:hover img {
+.event-thumbnail:hover .thumbnail-image {
   opacity: 0.8;
 }
 
@@ -28,8 +29,7 @@
 }
 
 .thumbnail-cardheader {
-  font-family: sans-serif;
-  font-size: 18px !important;
+  font-size: 18px;
   color: #4b4c4f;
   margin-left: 8px;
 }
@@ -50,7 +50,6 @@
   padding: 10px;
   font-weight: 500;
   border-radius: 2px;
-  padding: 10px;
   border: 2px solid darkgrey;
   color: grey;
   font-family: Roboto, sans-serif;
@@ -67,4 +66,7 @@
 }
 .thumbnail-details {
   padding: 8px;
+}
+.thumbnail-date {
+  font-size: 13px;
 }
