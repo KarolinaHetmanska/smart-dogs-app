@@ -46,7 +46,7 @@ const FavoritesEventsView = props => {
           <br />
           <h1>Twoje ulubione wydarzenia.</h1>
           <br />
-          <h2> Jeszcze nie dodałeś żadnego wydarzenia do ulubionych.</h2>
+          <h2> Nie masz żadnych wydarzeń dodanych do ulubionych.</h2>
         </div>
       </Grid>
     )

@@ -2,6 +2,8 @@ import React from 'react'
 import {SingleMapView} from '../MapView'
 import { places } from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
+import { FavoritesToggleButton } from '../FavoritesToggleButton'
+
 import './SingleEventview.css'
 
 import { connect } from 'react-redux'
@@ -11,16 +13,6 @@ const mapStateToProps = state => ({
   favoriteEvents: state.favoritesData.favoritesEvents
 })
 
-const mapDispatchProps = dispatch => ({
-   addEventToFavorites: (eventId) => dispatch({
-    type: 'ADD_EVENT_TO_FAVORITES',
-    eventId: eventId
-  }),
-  removeEventFromFavorites: (eventId) => dispatch({
-    type: 'REMOVE_EVENT_FROM_FAVORITES',
-    eventId: eventId
-  })
-})
 
 const SingleEventView = props => {
 
@@ -41,16 +33,7 @@ const SingleEventView = props => {
                   <img className="event-img" role="presentation" src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
-                  {
-                    props.favoriteEvents.indexOf(event.id) !== -1 ?
-                      <button onClick={() => props.removeEventFromFavorites(event.id)}>
-                       Usuń z ulubionych
-                      </button> :
-                      <button onClick={() => props.addEventToFavorites(event.id)}>
-                        Dodaj do ulubionch
-                      </button>
-                  }
-                  <br />
+                  <FavoritesToggleButton favoriteEventId={event.id} />
                   <hr />
                   <h1 className="event-name">{event.name}</h1>
                   <p>Data: {event.date}</p>
@@ -83,4 +66,4 @@ const SingleEventView = props => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(SingleEventView)
+export default connect(mapStateToProps)(SingleEventView)
