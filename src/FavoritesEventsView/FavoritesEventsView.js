@@ -21,23 +21,38 @@ const FavoritesEventsView = props => {
   const eventsToDisplay = props.allEvents.filter(
     event => props.favoritesEvents.indexOf(event.id) !== -1
   )
-  console.log(eventsToDisplay);
-  return (
-    <Grid>
-      < div >
-        <br />
-        <br />
-        <h1>Lista ulubionych wydarzeń</h1>
-        <br />
-        <FavoritesListView events={eventsToDisplay}/>
-        <Row>
-          <Col sm={10} smOffset={1}>
-            <MultiMapView searchedEvents={eventsToDisplay}/>
-          </Col>
-        </Row>
-      </div>
-    </Grid>
-  )
+  if (props.favoritesEvents.length > 0) {
+    return (
+      <Grid>
+        < div >
+          <br />
+          <br />
+          <h1>Twoje ulubione wydarzenia.</h1>
+          <br />
+          <FavoritesListView events={eventsToDisplay}/>
+          <Row>
+            <Col sm={10} smOffset={1}>
+              <MultiMapView searchedEvents={eventsToDisplay}/>
+            </Col>
+          </Row>
+        </div>
+      </Grid>
+    )
+  } else {
+    return (
+      <Grid>
+        < div >
+          <br />
+          <br />
+          <h1>Twoje ulubione wydarzenia.</h1>
+          <br />
+          <h2> Jeszcze nie dodałeś żadnego wydarzenia do ulubionych.</h2>
+        </div>
+      </Grid>
+    )
+
+
+  }
 
 }
 
