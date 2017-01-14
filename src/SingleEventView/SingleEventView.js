@@ -2,6 +2,8 @@ import React from 'react'
 import {SingleMapView} from '../MapView'
 import {places} from '../data'
 import {Grid, Row, Col} from 'react-bootstrap'
+import { FavoritesToggleButton } from '../FavoritesToggleButton'
+
 import moment from 'moment'
 import 'moment/locale/pl';
 import './SingleEventview.css'
@@ -49,16 +51,7 @@ const SingleEventView = props => {
                        src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
                 <Col sm={4}>
-                  {
-                    props.favoriteEvents.indexOf(event.id) !== -1 ?
-                      <button onClick={() => props.removeEventFromFavorites(event.id)}>
-                        Usuń z ulubionych
-                      </button> :
-                      <button onClick={() => props.addEventToFavorites(event.id)}>
-                        Dodaj do ulubionch
-                      </button>
-                  }
-                  <br />
+                  <FavoritesToggleButton favoriteEventId={event.id} />
                   <hr />
                   <h1 className="event-name">{event.name}</h1>
                   <h4 className="event-date">{event.hour}.00
@@ -98,4 +91,4 @@ const SingleEventView = props => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(SingleEventView)
+export default connect(mapStateToProps)(SingleEventView)
