@@ -8,7 +8,7 @@ export default (props) => {
   const placeOfEvent = props.placeOfEvent
 
   return (
-    <div className="map-container">
+    <div className="single-map-container">
       <GoogleMap
         bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
         defaultCenter={{
