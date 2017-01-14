@@ -64,6 +64,16 @@
   left:10px;
   display: none;
 }
+.add-to-favorites-toggle {
+  background-color: white;
+  border-radius: 2px;
+  padding: 4px;
+  color: #fd5d1d;
+  position: absolute;
+  top: 10px;
+  left:10px;
+  display: none;
+}
 .thumbnail-details {
   padding: 8px;
 }

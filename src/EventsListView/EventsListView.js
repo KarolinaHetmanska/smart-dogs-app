@@ -47,7 +47,7 @@ const EventsListView = props => {
                 {
                    props.favoriteEvents.indexOf(event.id) !== -1 ?
 
-                  <span className="add-to-favorites-toggle-button" onClick={() => props.removeEventFromFavorites(event.id)}>
+                  <span className="add-to-favorites-toggle-button" style={{backgroundColor: 'white', color: '#fd5d1d'}} onClick={() => props.removeEventFromFavorites(event.id)}>
                     <span className="glyphicon glyphicon-heart"/> Usuń
                   </span> :
 
