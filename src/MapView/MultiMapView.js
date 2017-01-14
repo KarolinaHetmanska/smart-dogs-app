@@ -17,7 +17,8 @@ export default (props) => {
 
   return (
     <Grid>
-      <h1>Wszystkie wydarzenia na jednej mapie:</h1>
+      <hr/>
+      <h1>Wybrane wydarzenia na mapie:</h1>
       <br/>
       <div className="map-container">
         <GoogleMap

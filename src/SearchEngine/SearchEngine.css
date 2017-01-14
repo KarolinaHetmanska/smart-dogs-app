@@ -5,7 +5,6 @@
   margin-left: -40px;
 }
 
-
 #select-category, #select-city, #select-date {
   width: 193px;
 }
@@ -72,4 +71,31 @@
 .caption-submain {
   font-size: 30px;
 }
-
+.see-more-link-container{
+  text-align: center;
+}
+.see-more-link-caption:hover{
+  background-color: #f7f8f9;
+  border: 2px solid darkgrey;
+  color: grey;
+}
+.see-more-link-caption{
+  background-color: darkgrey;
+  border: 2px solid darkgrey;
+  color: white;
+  display: inline;
+  padding: 10px 5%;
+  font-weight: 500;
+  border-radius: 2px;
+  font-size: 22px;
+  font-family: Roboto, sans-serif;
+}
+.see-more-link:hover{
+  text-decoration: none;
+}
+.see-more-link{
+position:relative;
+}
+.glyphicon-menu-right{
+  font-size: 16px;
+}
