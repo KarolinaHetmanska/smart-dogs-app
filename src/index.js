@@ -20,8 +20,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './index.css';
 
 import { fetchEvents } from './state/events/actionCreators'
+import { fetchPlaces } from './state/places/actionCreators'
 
 const fetchEventsOnEnter = () => store.dispatch(fetchEvents())
+const fetchPlacesONEnter = () => store.dispatch(fetchPlaces())
 
 ReactDOM.render(
   <Provider store={store}>
@@ -29,7 +31,7 @@ ReactDOM.render(
       <Route path="/" component={App} onEnter={fetchEventsOnEnter}>
         <IndexRoute component={SearchEngine} />
 
-        <Route path="/places" component={PlacesView}>
+        <Route path="/places" component={PlacesView} onEnter={fetchPlacesONEnter}>
           <Route path="/places/:placeId" component={PlaceView}/>
         </Route>
 
