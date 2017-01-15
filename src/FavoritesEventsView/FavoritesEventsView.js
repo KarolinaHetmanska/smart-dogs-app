@@ -7,6 +7,7 @@ import {
 import './FavoritesEventsView.css'
 
 import {MultiMapView} from '../MapView'
+import {EventsCalendar} from '../EventsCalendar'
 import {EventsListView} from '../EventsListView'
 
 import {connect} from 'react-redux'
@@ -21,6 +22,8 @@ const FavoritesEventsView = props => {
   const eventsToDisplay = props.allEvents.filter(
     event => props.favoritesEvents.indexOf(event.id) !== -1
   )
+  {console.log(eventsToDisplay)}
+
   if (props.favoritesEvents.length > 0) {
     return (
       <Grid>
@@ -34,6 +37,10 @@ const FavoritesEventsView = props => {
           </div>
         </Col>
         <Col xs={6}>
+          <Row>
+            <EventsCalendar />
+          </Row>
+          <hr/>
           <Row>
             <div className="favorite-map">
               <MultiMapView mapWidth={'100%'} searchedEvents={eventsToDisplay}/>

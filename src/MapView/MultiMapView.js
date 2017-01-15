@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
-import {Grid} from 'react-bootstrap'
+
 import PlaceMarker from './PlaceMarker'
 import {places} from '../data'
 import './MultiMapView.css'
