@@ -1,13 +1,18 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
+import {connect} from 'react-redux'
 import {Grid} from 'react-bootstrap'
 import PlaceMarker from './PlaceMarker'
-import {places} from '../data'
 import './MultiMapView.css'
 
-export default (props) => {
 
-  const placesOfEvents = places.filter(
+const mapSateToProps = (state) => ({
+  places: state.placesData.places
+})
+
+const MultiMapView = (props) => {
+
+  const placesOfEvents = props.places.filter(
     place =>
       props.searchedEvents.find(
         event =>
@@ -42,3 +47,5 @@ export default (props) => {
     </Grid>
   )
 }
+
+export default connect(mapSateToProps)(MultiMapView)

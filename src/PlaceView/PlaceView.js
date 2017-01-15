@@ -1,10 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Row, Col} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 
 const mapStateToProps = (state) => ({
-places: state.placesData.places
+  places: state.placesData.places
 })
 
 const PlaceView = (props) =>
@@ -37,4 +37,4 @@ const PlaceView = (props) =>
     </div>
   </div>
 
-export default connect (mapStateToProps)(PlaceView)
+export default connect(mapStateToProps)(PlaceView)

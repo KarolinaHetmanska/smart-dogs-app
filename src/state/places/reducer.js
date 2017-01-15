@@ -1,4 +1,4 @@
-import { FETCH_PLACES } from './actionTypes'
+import {FETCH_PLACES} from './actionTypes'
 
 const initialState = {
   places: []
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case FETCH_PLACES:
       return {
         ...state,
-       places: action.places
+        places: action.places
       }
     default:
       return state
