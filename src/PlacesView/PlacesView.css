@@ -1,20 +1,14 @@
-.places-view-container.container {
-  padding-left: 7.5%;
-  padding-right: 0;
-}
 .thumbnail-places.thumbnail {
   background-color: #f7f8f9;
   color: #4b4c4f;
-  position:relative;
+  position: relative;
   padding: 0;
-  border-radius: 5px;
-  border: 1px solid #e5e7ea;
   margin-bottom: 40px;
   font-family: Roboto, sans-serif;
-  margin-left: 0px;
-  margin-right: 7.5%;
+  margin-left: 10px;
   min-height: 200px;
 }
+
 .thumbnail-image-box {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -22,19 +16,25 @@
   min-height: 200px;
   background-position: center center;
 }
+
+.thumbnail-image-box:hover {
+  opacity: 0.8;
+}
+
 .thumbnail-header {
   font-size: 18px;
   color: #4b4c4f;
   margin-left: 8px;
 }
+
 .thumbnail-address {
   font-size: 13px;
   margin-left: 8px;
 }
-.thumbnail-szczegóły {
+
+.thumbnail-details-button {
   margin-top: 20px;
   padding: 10px;
-  font-weight: 500;
   border-radius: 2px;
   border: 2px solid darkgrey;
   color: grey;
@@ -42,9 +42,9 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-
-
 }
-/*a span.thumbnail-szczegóły:hover {*/
-  /*text-decoration: none;*/
-/*}*/
+
+.thumbnail-details-button:hover {
+  border: 2px solid lightgrey;
+  color: lightgray;
+}
