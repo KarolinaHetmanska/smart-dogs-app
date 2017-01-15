@@ -2,7 +2,7 @@
   padding-left: 7.5%;
   padding-right: 0;
 }
-.places-thumbnail.thumbnail {
+.thumbnail-places.thumbnail {
   background-color: #f7f8f9;
   color: #4b4c4f;
   position:relative;
@@ -13,12 +13,15 @@
   font-family: Roboto, sans-serif;
   margin-left: 0px;
   margin-right: 7.5%;
+  min-height: 200px;
 }
-/*.thumbnail-description-box.col-md-6.col-xs-6 {*/
-  /*padding-left: 10px;*/
-  /*height: auto;*/
-  /*max-width: 100%;*/
-/*}*/
+.thumbnail-image-box {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-size: cover;
+  min-height: 200px;
+  background-position: center center;
+}
 .thumbnail-header {
   font-size: 18px;
   color: #4b4c4f;
