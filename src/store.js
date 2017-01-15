@@ -2,15 +2,13 @@ import {compose, createStore, combineReducers, applyMiddleware} from 'redux'
 import persistState from 'redux-localstorage'
 import thunkMiddleware from 'redux-thunk'
 
-import {reducer as favoritesEventsReducer} from './SingleEventView'
+import { reducer as favoritesEventsReducer } from './FavoritesToggleButton'
 
 import allEventsReducer from './state/events/reducer'
-// import { reducer as eventsReducer } from './EventsListView'
-import {reducer as placeReducer} from './PlaceView'
+import { reducer as placeReducer } from './PlaceView'
 
 const reducer = combineReducers({
   allEventsData: allEventsReducer,
-  // eventsData: eventsReducer,
   placeData: placeReducer,
   favoritesData: favoritesEventsReducer
 
@@ -21,7 +19,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(
     thunkMiddleware
   ),
-  persistState(['favoritesData'])
+  persistState([ 'favoritesData' ], { key: 'smartdogs-v1' })
 )
 
 const store = createStore(reducer, enhancer);

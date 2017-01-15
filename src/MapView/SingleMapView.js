@@ -1,14 +1,14 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import PlaceMarker from './PlaceMarker'
-import {places} from '../data'
+import './SingleMapView.css'
 
 export default (props) => {
 
   const placeOfEvent = props.placeOfEvent
 
   return (
-    <div style={{height: 400, width: 800}}>
+    <div className="single-map-container">
       <GoogleMap
         bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
         defaultCenter={{
