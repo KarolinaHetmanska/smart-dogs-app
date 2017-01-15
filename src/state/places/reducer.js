@@ -1,15 +1,15 @@
-import {FETCH_EVENTS} from './actionTypes'
+import { FETCH_PLACES } from './actionTypes'
 
 const initialState = {
-  allEvents: []
+  places: []
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_EVENTS:
+    case FETCH_PLACES:
       return {
         ...state,
-        allEvents: action.allEvents
+       places: action.places
       }
     default:
       return state

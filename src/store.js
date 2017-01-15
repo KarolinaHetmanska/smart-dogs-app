@@ -3,13 +3,12 @@ import persistState from 'redux-localstorage'
 import thunkMiddleware from 'redux-thunk'
 
 import { reducer as favoritesEventsReducer } from './FavoritesToggleButton'
-
 import allEventsReducer from './state/events/reducer'
-import { reducer as placeReducer } from './PlaceView'
+import placesReducer  from './state/places/reducer'
 
 const reducer = combineReducers({
   allEventsData: allEventsReducer,
-  placeData: placeReducer,
+  placesData: placesReducer,
   favoritesData: favoritesEventsReducer
 
 })

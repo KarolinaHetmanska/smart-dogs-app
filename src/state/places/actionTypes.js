@@ -1,3 +1,1 @@
-/**
- * Created by khetmanska on 13.01.17.
- */
+export const FETCH_PLACES = 'places/FETCH_PLACES'
