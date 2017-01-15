@@ -5,7 +5,7 @@ import PlaceMarker from './PlaceMarker'
 import {places} from '../data'
 import './MultiMapView.css'
 
-export default (props) => {
+const MultiMapView = props => {
 
   const placesOfEvents = places.filter(
     place =>
@@ -16,11 +16,10 @@ export default (props) => {
   )
 
   return (
-    <Grid>
-      <hr/>
+    <div>
       <h1>Wybrane wydarzenia na mapie:</h1>
       <br/>
-      <div className="map-container">
+      <div className="map-container" style={{width: props.mapWidth}}>
         <GoogleMap
           bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
           defaultCenter={{
@@ -39,6 +38,8 @@ export default (props) => {
           }
         </GoogleMap>
       </div>
-    </Grid>
+    </div>
   )
 }
+
+export default MultiMapView

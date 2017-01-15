@@ -4,7 +4,7 @@ import {
   Col,
   Row
 } from 'react-bootstrap'
-
+import './FavoritesEventsView.css'
 
 import {MultiMapView} from '../MapView'
 import {EventsListView} from '../EventsListView'
@@ -24,16 +24,22 @@ const FavoritesEventsView = props => {
   if (props.favoritesEvents.length > 0) {
     return (
       <Grid>
-        <Row>
-          <br />
-          <br />
-          <h1>Twoje ulubione wydarzenia</h1>
-          <br />
-          <EventsListView events={eventsToDisplay}/>
-        </Row>
-        <Row>
-            <MultiMapView searchedEvents={eventsToDisplay}/>
-        </Row>
+        <Col xs={6}>
+          <div className="favorite-thumbnails">
+            <h1>Twoje ulubione wydarzenia</h1>
+            <br />
+            <div className="fav--shift-left">
+            <EventsListView colWidthMd={6} events={eventsToDisplay}/>
+            </div>
+          </div>
+        </Col>
+        <Col xs={6}>
+          <Row>
+            <div className="favorite-map">
+              <MultiMapView mapWidth={'100%'} searchedEvents={eventsToDisplay}/>
+            </div>
+          </Row>
+        </Col>
 
       </Grid>
     )
