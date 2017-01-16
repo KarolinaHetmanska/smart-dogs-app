@@ -23,15 +23,20 @@ import { fetchEvents } from './state/events/actionCreators'
 import { fetchPlaces } from './state/places/actionCreators'
 
 const fetchEventsOnEnter = () => store.dispatch(fetchEvents())
-const fetchPlacesONEnter = () => store.dispatch(fetchPlaces())
+const fetchPlacesOnEnter = () => store.dispatch(fetchPlaces())
+
+const fetchAllTheThings = () => {
+  fetchEventsOnEnter()
+  fetchPlacesOnEnter()
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App} onEnter={fetchEventsOnEnter}>
+      <Route path="/" component={App} onEnter={fetchAllTheThings}>
         <IndexRoute component={SearchEngine} />
 
-        <Route path="/places" component={PlacesView} onEnter={fetchPlacesONEnter}>
+        <Route path="/places" component={PlacesView} >
           <Route path="/places/:placeId" component={PlaceView}/>
         </Route>
 

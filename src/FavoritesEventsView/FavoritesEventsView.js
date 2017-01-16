@@ -22,7 +22,6 @@ const FavoritesEventsView = props => {
   const eventsToDisplay = props.allEvents.filter(
     event => props.favoritesEvents.indexOf(event.id) !== -1
   )
-  {console.log(eventsToDisplay)}
 
   if (props.favoritesEvents.length > 0) {
     return (
@@ -32,13 +31,15 @@ const FavoritesEventsView = props => {
             <h1>Twoje ulubione wydarzenia</h1>
             <br />
             <div className="fav--shift-left">
-            <EventsListView colWidthMd={6} events={eventsToDisplay}/>
+              <EventsListView colWidthMd={6} events={eventsToDisplay}/>
             </div>
           </div>
         </Col>
         <Col xs={6}>
           <Row>
-            <EventsCalendar />
+            <div className="favorite-calendar-container">
+              <EventsCalendar />
+            </div>
           </Row>
           <hr/>
           <Row>

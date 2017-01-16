@@ -1,7 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import {connect} from 'react-redux'
-import {Grid} from 'react-bootstrap'
 import PlaceMarker from './PlaceMarker'
 import './MultiMapView.css'
 
@@ -20,6 +19,7 @@ const MultiMapView = (props) => {
       )
   )
 
+  //console.log(placesOfEvents, 'places of events')
   return (
     <div>
       <h1>Wybrane wydarzenia na mapie:</h1>
