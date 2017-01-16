@@ -176,14 +176,15 @@ class SearchEngine extends React.Component {
 
         <Grid>
           <Row>
-            <Col className="shift-more-left">
+            <Col className="shift-left">
               <h3
                 className="error-message">{this.state.found.length !== 0 ? 'Najbliższe wydarzenia dla "' + (this.state.search || this.state.chosenCategory || this.state.chosenPlace || this.chosenTime) + '"' : this.state.errorMessage}</h3>
               <br />
               <br />
 
               <ul>
-                <EventsListView events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
+                <EventsListView colWidthMd={3} colWidthSm={6}
+                                  events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                   (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
                 ).slice(0, 8)}/>
 
@@ -199,7 +200,8 @@ class SearchEngine extends React.Component {
             <br/>
           </Row>
           <Row>
-            <Col className="shift-left">
+            <Col>
+              <hr/>
               <MultiMapView
                 searchedEvents={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                   (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()

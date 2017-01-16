@@ -8,7 +8,7 @@ export default (props) => {
       <div>
         <h1>Lista wydarzeń</h1>
         <br />
-        <EventsListView />
+        <EventsListView colWidthMd={3}/>
       </div>
       {props.children}
     </Grid>

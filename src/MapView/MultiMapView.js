@@ -21,11 +21,10 @@ const MultiMapView = (props) => {
   )
 
   return (
-    <Grid>
-      <hr/>
+    <div>
       <h1>Wybrane wydarzenia na mapie:</h1>
       <br/>
-      <div className="map-container">
+      <div className="map-container" style={{width: props.mapWidth}}>
         <GoogleMap
           bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
           defaultCenter={{
@@ -44,7 +43,7 @@ const MultiMapView = (props) => {
           }
         </GoogleMap>
       </div>
-    </Grid>
+    </div>
   )
 }
 
