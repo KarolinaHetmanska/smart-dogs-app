@@ -1,11 +1,11 @@
 import React from 'react'
-import {places} from '../data'
-import { Row, Col} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 
-// const mapStateToProps = state => ({
-//   onePlace: state.placeData.onePlace
-// })
+const mapStateToProps = (state) => ({
+  places: state.placesData.places
+})
 
 const PlaceView = (props) =>
 
@@ -13,8 +13,8 @@ const PlaceView = (props) =>
     <h1>One place view</h1>
     <div>
       {
-        places.filter(place =>
-          place.id === parseInt(props.params.placeId, 10)
+        props.places.filter(place =>
+          place.id === parseInt(props.params.placeId)
         ).map(place =>
           <div className="singleEvent-container" key={place.id}>
             <Row>
@@ -37,4 +37,4 @@ const PlaceView = (props) =>
     </div>
   </div>
 
-export default PlaceView
+export default connect(mapStateToProps)(PlaceView)
