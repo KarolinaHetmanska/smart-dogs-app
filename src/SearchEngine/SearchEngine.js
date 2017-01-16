@@ -149,7 +149,8 @@ class SearchEngine extends React.Component {
       }
 
       this.setState({
-        eventKeyCategory: eventKeyCategory, eventKeyPlace: eventKeyPlace, eventKeyTime: eventKeyTime
+        eventKeyCategory: eventKeyCategory, eventKeyPlace: eventKeyPlace, eventKeyTime: eventKeyTime,
+        chosenCategory: eventKeyCategory, chosenPlace: eventKeyPlace, chosenTime: eventKeyTime
       })
     }
 
@@ -205,7 +206,7 @@ class SearchEngine extends React.Component {
           <Row>
             <Col>
               <DropdownButton id="select-category" bsStyle={'default'}
-                              title={ this.state.eventKeyCategory === 'wszystkie' ? 'Kategorie' :this.state.eventKeyCategory}
+                              title={this.state.eventKeyCategory === 'wszystkie' ? 'Kategorie' :this.state.eventKeyCategory}
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey="Category.koncert">koncert</MenuItem>
                 <MenuItem eventKey="Category.musical">musical</MenuItem>
@@ -223,7 +224,7 @@ class SearchEngine extends React.Component {
               </DropdownButton>
 
               <DropdownButton id="select-date" bsStyle={'default'}
-                              title={ 'Kiedy'}
+                              title={ 'Kiedy' }
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey={'Time.604800000'} >Najbliższy tydzień</MenuItem>
                 <MenuItem eventKey={'Time.2592000000'}>Najbliższy miesiąc</MenuItem>
