@@ -149,7 +149,7 @@ class SearchEngine extends React.Component {
       }
 
       this.setState({
-        eventKeyCategory: eventKeyCategory, eventKeyPlace, eventKeyTime
+        eventKeyCategory: eventKeyCategory, eventKeyPlace: eventKeyPlace, eventKeyTime: eventKeyTime
       })
     }
 
@@ -205,7 +205,7 @@ class SearchEngine extends React.Component {
           <Row>
             <Col>
               <DropdownButton id="select-category" bsStyle={'default'}
-                              title={ 'Kategorie'}
+                              title={ this.state.eventKeyCategory === 'wszystkie' ? 'Kategorie' :this.state.eventKeyCategory}
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey="Category.koncert">koncert</MenuItem>
                 <MenuItem eventKey="Category.musical">musical</MenuItem>
@@ -214,7 +214,7 @@ class SearchEngine extends React.Component {
               </DropdownButton>
 
               <DropdownButton id="select-city" bsStyle={'default'}
-                              title={'Gdzie'}
+                              title={this.state.eventKeyPlace === 'Cale' ? 'Gdzie' :this.state.eventKeyPlace}
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey="Place.Gdańsk">Gdańsk</MenuItem>
                 <MenuItem eventKey="Place.Sopot">Sopot</MenuItem>
