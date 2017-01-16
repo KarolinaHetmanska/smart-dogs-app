@@ -1,9 +1,14 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
+import {connect} from 'react-redux'
 import PlaceMarker from './PlaceMarker'
 import './SingleMapView.css'
 
-export default (props) => {
+const mapSateToProps = (state) => ({
+  places: state.placesData.places
+})
+
+const SingleMapView = (props) => {
 
   const placeOfEvent = props.placeOfEvent
 
@@ -23,3 +28,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default connect(mapSateToProps)(SingleMapView)
