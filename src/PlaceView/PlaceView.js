@@ -4,7 +4,8 @@ import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 
 const mapStateToProps = (state) => ({
-  places: state.placesData.places
+  places: state.placesData.places,
+  allEvents: state.allEventsData.allEvents
 })
 
 const PlaceView = (props) =>
@@ -26,6 +27,17 @@ const PlaceView = (props) =>
                 <h1 className="event-name">{place.name}</h1>
               </Col>
             </Row>
+            <div>
+              <ul>
+                <li>{props.allEvents.filter(event => {
+                  props.allEvents.indexOf(props.places.events) === event.id
+                  }
+
+                )}
+                </li>
+              </ul>
+            </div>
+
             <Row>
               <Col sm={6} smOffset={2}>
                 <SingleMapView placeOfEvent={place}/>
