@@ -29,12 +29,14 @@ const PlaceView = (props) =>
             </Row>
             <div>
               <ul>
-                <li>{props.allEvents.filter(event => {
-                  props.allEvents.indexOf(props.places.events) === event.id
-                  }
+                {props.allEvents.filter(event =>
+                  props.places[props.params.placeId].events.indexOf(event.id) !== -1
+                ).map(event =>
+                  <li>
+                    {event.name}
+                  </li>)
+                }
 
-                )}
-                </li>
               </ul>
             </div>
 
