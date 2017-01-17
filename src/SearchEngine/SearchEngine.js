@@ -33,6 +33,9 @@ class SearchEngine extends React.Component {
       eventKeyCategory: 'wszystkie',
       eventKeyPlace: 'Cale',
       eventKeyTime: 9997776000000,
+      eventKeyCategoryName: 'Kategorie',
+      eventKeyPlaceName: 'Gdzie',
+      eventKeyTimeName: 'Kiedy',
       filterText: ''
     }
 
@@ -64,21 +67,24 @@ class SearchEngine extends React.Component {
       }
     }
 
-    this.handleDropdownAll = (eventKeyValue) => {
+    this.handleDropdownAll = (eventKeyValue, event) => {
       //console.log(data)
       //let eventKeyValue = 'asdfas'
       const [prefix, value] = eventKeyValue.split('.')
-      let {eventKeyCategory, eventKeyPlace, eventKeyTime} = this.state
+      let {eventKeyCategory, eventKeyPlace, eventKeyTime, eventKeyCategoryName, eventKeyPlaceName, eventKeyTimeName} = this.state
 
       switch (prefix) {
         case 'Category':
           eventKeyCategory = value;
+          eventKeyCategoryName = event.target.innerHTML
           break;
         case 'Place':
           eventKeyPlace = value;
+          eventKeyPlaceName = event.target.innerHTML
           break;
         case 'Time':
           eventKeyTime = parseInt(value);
+          eventKeyTimeName = event.target.innerHTML
           break;
       }
 
@@ -136,8 +142,17 @@ class SearchEngine extends React.Component {
 
 
       this.setState({
-        eventKeyCategory: eventKeyCategory, eventKeyPlace: eventKeyPlace, eventKeyTime: eventKeyTime,
-        chosenCategory: eventKeyCategory, chosenPlace: eventKeyPlace, chosenTime: eventKeyTime
+        eventKeyCategory: eventKeyCategory,
+        eventKeyPlace: eventKeyPlace,
+        eventKeyTime: eventKeyTime,
+
+        eventKeyCategoryName: eventKeyCategoryName,
+        eventKeyPlaceName: eventKeyPlaceName,
+        eventKeyTimeName: eventKeyTimeName,
+
+        chosenCategory: eventKeyCategory,
+        chosenPlace: eventKeyPlace,
+        chosenTime: eventKeyTime
       })
     }
   }
@@ -179,7 +194,7 @@ class SearchEngine extends React.Component {
           <Row>
             <Col>
               <DropdownButton id="select-category" bsStyle={'default'}
-                              title={this.state.eventKeyCategory === 'wszystkie' ? 'Kategorie' : this.state.eventKeyCategory}
+                              title={this.state.eventKeyCategoryName }
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey="Category.koncert">koncert</MenuItem>
                 <MenuItem eventKey="Category.musical">musical</MenuItem>
@@ -188,7 +203,7 @@ class SearchEngine extends React.Component {
               </DropdownButton>
 
               <DropdownButton id="select-city" bsStyle={'default'}
-                              title={this.state.eventKeyPlace === 'Cale' ? 'Gdzie' : this.state.eventKeyPlace}
+                              title={this.state.eventKeyPlaceName }
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey="Place.Gdańsk">Gdańsk</MenuItem>
                 <MenuItem eventKey="Place.Sopot">Sopot</MenuItem>
@@ -197,12 +212,12 @@ class SearchEngine extends React.Component {
               </DropdownButton>
 
               <DropdownButton id="select-date" bsStyle={'default'}
-                              title={ 'Kiedy' }
+                              title={ this.state.eventKeyTimeName }
                               onSelect={this.handleDropdownAll}>
                 <MenuItem eventKey={'Time.604800000'}>Najbliższy tydzień</MenuItem>
                 <MenuItem eventKey={'Time.2592000000'}>Najbliższy miesiąc</MenuItem>
                 <MenuItem eventKey={'Time.7776000000'}>Najbliższy kwartał</MenuItem>
-                <MenuItem eventKey={'Time.9997776000000'}>Wszystkie</MenuItem>
+                <MenuItem eventKey={'Time.9997776000000'}>Najbliższy rok</MenuItem>
               </DropdownButton>
 
             </Col>
@@ -230,15 +245,23 @@ class SearchEngine extends React.Component {
                       }}>
                   {
                     (this.state.eventKeyCategory !== 'wszystkie') && (this.state.errorMessage === false) ?
-                    this.state.eventKeyCategory + ' X' : null
+                    this.state.eventKeyCategory  : null
                   }</span>
                 <span className="filters-chosen-place"
+                              style={{
+                                backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
+                              }}
+              >{
+                (this.state.eventKeyPlace !== 'Cale') && (this.state.errorMessage === false) ?
+                  this.state.eventKeyPlace  : null
+              }</span>
+                <span className="filters-chosen-time"
                       style={{
-                        backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
+                        backgroundColor: setup[this.state.eventKeyTimeName] || '#ffffff'
                       }}
                 >{
-                  (this.state.eventKeyPlace !== 'Cale') && (this.state.errorMessage === false) ?
-                  this.state.eventKeyPlace + ' X' : null
+                  (this.state.eventKeyTimeName!== 'Kiedy') && (this.state.errorMessage === false) ?
+                    this.state.eventKeyTimeName : null
                 }</span>
               </div>
               <br />
