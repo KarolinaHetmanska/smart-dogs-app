@@ -17,7 +17,7 @@ const PlaceView = (props) =>
     <div>
       {
         props.places.filter(place =>
-          place.id === parseInt(props.params.placeId)
+          place.id === parseInt(props.params.placeId, 10)
         ).map(place =>
           <div className="singleEvent-container" key={place.id}>
             <Row>
