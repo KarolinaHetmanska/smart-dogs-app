@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 import {EventsListView} from '../EventsListView'
+import {CommentsView} from '../CommentsView'
 
 
 const mapStateToProps = (state) => ({
@@ -44,6 +45,9 @@ const PlaceView = (props) =>
                 }
               />
               </Row>
+              <Row>
+              <CommentsView/>
+                </Row>
             </div>
           </div>
         )
