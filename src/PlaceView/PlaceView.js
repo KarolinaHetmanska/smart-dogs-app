@@ -2,9 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
+import {EventsListView} from '../EventsListView'
+
 
 const mapStateToProps = (state) => ({
-  places: state.placesData.places
+  places: state.placesData.places,
+  allEvents: state.allEventsData.allEvents
 })
 
 const PlaceView = (props) =>
@@ -31,6 +34,17 @@ const PlaceView = (props) =>
                 <SingleMapView placeOfEvent={place}/>
               </Col>
             </Row>
+            <div>
+              <Row>
+              <EventsListView colWidthSm={4} colWidthMd={4}
+                              events=
+                {props.allEvents.filter(event =>
+                  props.places[props.params.placeId].events.indexOf(event.id) !== -1
+                )
+                }
+              />
+              </Row>
+            </div>
           </div>
         )
       }
