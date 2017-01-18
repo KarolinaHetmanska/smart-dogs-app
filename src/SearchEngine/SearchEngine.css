@@ -54,6 +54,7 @@
 .search-background {
   background-image: url('../../public/img/gdansk.jpg');
   background-position-y: -340px;
+  background-size: cover;
   opacity: 0.9;
   width: 100%;
 }

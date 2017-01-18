@@ -36,16 +36,16 @@ ReactDOM.render(
       <Route path="/" component={App} onEnter={fetchAllTheThings}>
         <IndexRoute component={SearchEngine} />
 
-        <Route path="/places" component={PlacesView} >
-          <Route path="/places/:placeId" component={PlaceView}/>
+        <Route onEnter={() => window.scrollTo(0, 0)} path="/places" component={PlacesView} >
+          <Route onEnter={() => window.scrollTo(0, 0)} path="/places/:placeId" component={PlaceView}/>
         </Route>
 
         <Route onEnter={() => window.scrollTo(0, 0)} path="/events" component={EventsView}  />
-        <Route path="/events/:eventId" component={SingleEventView} />
+        <Route onEnter={() => window.scrollTo(0, 0)} path="/events/:eventId" component={SingleEventView} />
 
-        <Route path="/eventslist" component={EventsListView} />
+        <Route onEnter={() => window.scrollTo(0, 0)} path="/eventslist" component={EventsListView} />
 
-        <Route path="/favorites" component={FavoritesEventsView} />
+        <Route onEnter={() => window.scrollTo(0, 0)} path="/favorites" component={FavoritesEventsView} />
 
         <Route path="*" component={NotFoundView}/>
       </Route>

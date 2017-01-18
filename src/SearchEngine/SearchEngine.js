@@ -167,7 +167,7 @@ class SearchEngine extends React.Component {
                 <h1 className="caption-main">Miasto żyje!</h1>
               </Col>
               <Col>
-                <h3 className="caption-submain">Wszystkie wydarzenia kulturalne w jednym miejscu</h3>
+                <h3 className="caption-submain">Wszystkie wydarzenia w jednym miejscu</h3>
                 <br/>
               </Col>
               <Row>
