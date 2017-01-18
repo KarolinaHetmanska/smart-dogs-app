@@ -32,7 +32,7 @@ class SearchEngine extends React.Component {
       phrase: "Co Ciebie interesuje?",
       eventKeyCategory: 'wszystkie',
       eventKeyPlace: 'Cale',
-      eventKeyTime: 9997776000000,
+      eventKeyTime: 31104000000,
       eventKeyCategoryName: 'Kategorie',
       eventKeyPlaceName: 'Gdzie',
       eventKeyTimeName: 'Kiedy',
@@ -217,7 +217,7 @@ class SearchEngine extends React.Component {
                 <MenuItem eventKey={'Time.604800000'}>Najbliższy tydzień</MenuItem>
                 <MenuItem eventKey={'Time.2592000000'}>Najbliższy miesiąc</MenuItem>
                 <MenuItem eventKey={'Time.7776000000'}>Najbliższy kwartał</MenuItem>
-                <MenuItem eventKey={'Time.9997776000000'}>Najbliższy rok</MenuItem>
+                <MenuItem eventKey={'Time.31104000000'}>Najbliższy rok</MenuItem>
               </DropdownButton>
 
             </Col>
@@ -257,7 +257,7 @@ class SearchEngine extends React.Component {
               }</span>
                 <span className="filters-chosen-time"
                       style={{
-                        backgroundColor: setup[this.state.eventKeyTimeName] || '#ffffff'
+                        backgroundColor: setup[this.state.eventKeyTimeName] === 'Kiedy' || '#ffffff'
                       }}
                 >{
                   (this.state.eventKeyTimeName!== 'Kiedy') && (this.state.errorMessage === false) ?
