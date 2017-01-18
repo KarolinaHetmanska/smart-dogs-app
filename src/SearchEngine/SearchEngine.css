@@ -106,6 +106,18 @@
 .glyphicon-search {
   font-size: 22px;
 }
+.filters-chosen-category,
+.filters-chosen-place{
+  margin: 10px;
+  padding:10px;
+  color: white;
+  border-radius: 2px;
+}
+
+.filters-intro{
+  margin-left: 60px;
+  font-size: 16px;
+}
 
 @media screen and (max-width: 780px) {
   .search-form-wrapper {
