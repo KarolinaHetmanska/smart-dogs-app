@@ -1,8 +1,5 @@
-.shift-left{
-  margin-left: -15px;
-}
-.shift-more-left{
-  margin-left: -40px;
+.shift-left {
+  margin-left: -50px;
 }
 
 #select-category, #select-city, #select-date {
@@ -39,6 +36,7 @@
   font-size: 22px;
   color: grey;
 }
+
 .glyphicon-search {
   vertical-align: middle;
 }
@@ -52,18 +50,21 @@
   background-color: white;
 }
 
+
 .search-background {
   background-image: url('../../public/img/gdansk.jpg');
   background-position-y: -340px;
   opacity: 0.9;
   width: 100%;
 }
+
 .caption-main,
-.caption-submain{
+.caption-submain {
   color: white;
   font-weight: bold;
   text-shadow: #333333 0px 0px 3px;
 }
+
 .caption-main {
   font-size: 64px;
 }
@@ -71,15 +72,18 @@
 .caption-submain {
   font-size: 30px;
 }
-.see-more-link-container{
+
+.see-more-link-container {
   text-align: center;
 }
-.see-more-link-caption:hover{
+
+.see-more-link-caption:hover {
   background-color: #f7f8f9;
   border: 2px solid darkgrey;
   color: grey;
 }
-.see-more-link-caption{
+
+.see-more-link-caption {
   background-color: darkgrey;
   border: 2px solid darkgrey;
   color: white;
@@ -90,14 +94,17 @@
   font-size: 22px;
   font-family: Roboto, sans-serif;
 }
-.see-more-link:hover{
+
+.see-more-link:hover {
   text-decoration: none;
 }
-.see-more-link{
-position:relative;
+
+.see-more-link {
+  position: relative;
 }
-.glyphicon-menu-right{
-  font-size: 16px;
+
+.glyphicon-search {
+  font-size: 22px;
 }
 .filters-chosen-category,
 .filters-chosen-place{
@@ -110,4 +117,26 @@ position:relative;
 .filters-intro{
   margin-left: 60px;
   font-size: 16px;
+}
+
+@media screen and (max-width: 780px) {
+  .search-form-wrapper {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .search-form-wrapper {
+    width: 200px;
+  }
+
+  .search-form {
+    width: 70%;
+    border-right: none;
+    font-size: 12px;
+  }
+
+  .glyphicon-search {
+    font-size: 14px;
+  }
 }

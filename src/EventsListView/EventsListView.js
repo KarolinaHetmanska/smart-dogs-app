@@ -35,7 +35,7 @@ const EventsListView = props => {
     <div>
       {
         (props.events || props.allEvents).map(event =>
-          <Col sm={6} md={3} key={event.id}>
+          <Col sm={props.colWidthSm} md={props.colWidthMd} key={event.id}>
             <div className="event-thumbnail">
               <Link className="thumbnail-no-highlight" to={'/events/' + event.id}>
                 <div className="thumbnail-image"
