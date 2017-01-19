@@ -15,8 +15,10 @@ class CommentsView extends React.Component {
     super()
   }
 
+
   componentWillMount() {
-    fetchDataComments()
+    console.log("willmount:", this.props)
+    this.props.fetchDataComments()
   }
 
   render() {
