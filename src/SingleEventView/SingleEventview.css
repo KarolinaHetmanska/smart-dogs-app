@@ -2,9 +2,10 @@
   margin-top: 40px;
 }
 .event-img{
-  min-height: 350px;
+  max-height: 560px;
   max-width: 100%;
   border-radius: 20px;
+  float: right;
 }
 .event-name {
   margin-top: 0;

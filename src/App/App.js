@@ -1,6 +1,7 @@
 import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap'
-import { Link } from 'react-router'
+import {LinkContainer} from 'react-router-bootstrap'
+import {Link} from 'react-router'
+import {Footer} from '../Footer'
 import  logo from '../../public/img/logo-w-miasto.png'
 
 import {
@@ -20,7 +21,7 @@ export default (props) => (
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <img className="nav-logo" src={logo} role="presentation"  />
+            <img className="nav-logo" src={logo} role="presentation"/>
           </Link>
         </Navbar.Brand>
 
@@ -41,9 +42,7 @@ export default (props) => (
             <NavItem eventKey={3} href="#">ULUBIONE</NavItem>
           </LinkContainer>
 
-          <LinkContainer to="/login">
-            <NavItem eventKey={4} href="#">ZALOGUJ</NavItem>
-          </LinkContainer>
+
 
         </Nav>
       </Navbar.Collapse>
@@ -53,6 +52,14 @@ export default (props) => (
       <Col md={12}>
         {props.children}
       </Col>
+    </Row>
+
+    <Row>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+        <Footer />
     </Row>
 
   </Grid>
