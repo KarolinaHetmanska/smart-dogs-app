@@ -19,7 +19,18 @@ const MultiMapView = (props) => {
       )
   )
 
-  //console.log(placesOfEvents, 'places of events')
+  const centerLat = placesOfEvents.map(
+      place => {
+        return place.lat
+      }
+    ).reduce((prev , next)=> prev + next, 0) / placesOfEvents.length;
+
+  const centerLng = placesOfEvents.map(
+      place => {
+        return place.lng
+      }
+    ).reduce((prev , next)=> prev + next, 0) / placesOfEvents.length;
+
   return (
     <div>
       <h1>Wybrane wydarzenia na mapie:</h1>
@@ -27,9 +38,9 @@ const MultiMapView = (props) => {
       <div className="map-container" style={{width: props.mapWidth}}>
         <GoogleMap
           bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
-          defaultCenter={{
-            lat: 54.405,
-            lng: 18.595
+          center={{
+            lat: centerLat || 54.430,
+            lng: centerLng || 18.595
           }}
           defaultZoom={11}>
           {
