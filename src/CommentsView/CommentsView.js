@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 class CommentsView extends React.Component {
-  constructor() {
-    super()
-  }
+  // constructor() {
+  //   super()
+  // }
 
 
   componentWillMount() {
@@ -31,7 +31,7 @@ class CommentsView extends React.Component {
             this.props.comments.map(comment =>
 
               <table>
-                <tr>
+                <tr key={comment.id}>
                   <td>{comment.title}</td>
                   <td>{comment.content}</td>
                   <td>{comment.authorName}</td>
@@ -45,7 +45,6 @@ class CommentsView extends React.Component {
         <input type="text"/>
         <p>Komentarz</p>
         <textarea cols="30" rows="10">
-
 </textarea>
         <p>Podpis</p>
         <input type="text"/>
