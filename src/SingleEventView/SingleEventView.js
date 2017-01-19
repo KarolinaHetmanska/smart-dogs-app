@@ -46,7 +46,7 @@ const SingleEventView = props => {
           event =>
             <div className="single-event-container" key={event.id}>
               <Row>
-                <Col sm={4} smOffset={2}>
+                <Col sm={6} smOffset={1}>
                   <img className="event-img" role="presentation"
                        src={process.env.PUBLIC_URL + '/img/events/' + event.image}/>
                 </Col>
@@ -70,7 +70,7 @@ const SingleEventView = props => {
               <br />
               <br />
               <Row>
-                <Col sm={8} smOffset={2}>
+                <Col sm={8} smOffset={1}>
                   <div className="event-description-container">
                     <h3>Opis wydarzenia:</h3>
                     <p className="event-description">{event.description}</p>
@@ -80,7 +80,7 @@ const SingleEventView = props => {
               <br/>
               <br/>
               <Row>
-                <Col sm={8} smOffset={2}>
+                <Col sm={10} smOffset={1}>
                   <SingleMapView placeOfEvent={placeOfEvent}/>
                 </Col>
               </Row>
