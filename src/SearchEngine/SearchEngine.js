@@ -36,7 +36,8 @@ class SearchEngine extends React.Component {
       eventKeyCategoryName: 'Kategorie',
       eventKeyPlaceName: 'Gdzie',
       eventKeyTimeName: 'Kiedy',
-      filterText: ''
+      filterText: '',
+      searchMessage: 'Najbliższe wydarzenia'
     }
 
     this.handleSubmit = (event) => {
@@ -56,12 +57,12 @@ class SearchEngine extends React.Component {
       if (foundEvents.length > 0) {
         this.setState({
           found: foundEvents,
-          errorMessage: false,
+          searchMessage: 'Najbliższe wydarzenia dla ' + "'" + search + "'",
           filterText: 'Wybrane filtry: '
         })
       } else {
         this.setState({
-          errorMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
+          searchMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
           found: []
         })
       }
@@ -90,7 +91,7 @@ class SearchEngine extends React.Component {
 
       let chosenTimeFrame = (new Date().getTime() + eventKeyTime)
       this.setState({
-        errorMessage: false,
+        searchMessage: 'Najbliższe wydarzenia',
         search: ''
       })
       if (eventKeyCategory === 'wszystko' && eventKeyPlace === 'Cale') {
@@ -227,40 +228,31 @@ class SearchEngine extends React.Component {
         <Grid>
           <Row>
             <Col className="shift-left">
-              <h3
-                className="error-message">&#xA0;{
-                (this.state.found.length !== 0) && (this.state.search !== '') ?
-                'Najbliższe wydarzenia: ' + '"' + this.state.search + '"' : this.state.errorMessage
-              }
-              </h3>
+              <h3 className="search-message"> {this.state.searchMessage} </h3>
               <div className="filters-container">
-                <span
-                  className="filters-intro">{((this.state.eventKeyCategory !== 'wszystkie') ||
-                (this.state.eventKeyPlace !== 'Cale')) &&
-                (this.state.errorMessage === false)
-                  ? this.state.filterText : null}</span>
-                <span key="category.filter" onClick={this.handleFilterClick} className="filters-chosen-category"
-                      style={{
-                        backgroundColor: setup[this.state.eventKeyCategory] || '#ffffff'
-                      }}>
-                  {
-                    (this.state.eventKeyCategory !== 'wszystkie') && (this.state.errorMessage === false) ?
-                    this.state.eventKeyCategory  : null
-                  }</span>
+                {
+                  (this.state.eventKeyCategory !== 'wszystkie') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                    <div className="filters-intro">Wybrane filtry:
+                      <span key="category.filter" onClick={this.handleFilterClick} className="filters-chosen-category"
+                            style={{
+                              backgroundColor: setup[this.state.eventKeyCategory] || '#ffffff'
+                            }}>{this.state.eventKeyCategory} X</span>
+                    </div> : null
+                }
                 <span className="filters-chosen-place"
-                              style={{
-                                backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
-                              }}
-              >{
-                (this.state.eventKeyPlace !== 'Cale') && (this.state.errorMessage === false) ?
-                  this.state.eventKeyPlace  : null
-              }</span>
+                      style={{
+                        backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
+                      }}
+                >{
+                  (this.state.eventKeyPlace !== 'Cale') ?
+                    this.state.eventKeyPlace : null
+                }</span>
                 <span className="filters-chosen-time"
                       style={{
                         backgroundColor: setup[this.state.eventKeyTimeName] === 'Kiedy' || '#ffffff'
                       }}
                 >{
-                  (this.state.eventKeyTimeName!== 'Kiedy') && (this.state.errorMessage === false) ?
+                  (this.state.eventKeyTimeName !== 'Kiedy') && (this.state.searchMessage === false) ?
                     this.state.eventKeyTimeName : null
                 }</span>
               </div>
@@ -269,9 +261,9 @@ class SearchEngine extends React.Component {
 
               <ul>
                 <EventsListView colWidthMd={3} colWidthSm={6}
-                                  events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
-                  (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
-                ).slice(0, 8)}/>
+                                events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
+                                  (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
+                                ).slice(0, 8)}/>
 
               </ul>
             </Col>
