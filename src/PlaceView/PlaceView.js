@@ -45,7 +45,7 @@ const PlaceView = (props) =>
               />
               </Row>
               <Row>
-              <CommentsView/>
+              <CommentsView {...props} />
                 </Row>
             </div>
           </div>

@@ -10,7 +10,7 @@ export const fetchComments = () => dispatch => {
   }).then(function (response) {
     return response.json();
   }).then(function (commentsArray) {
-    console.log('get w AC: ', commentsArray);
+    // console.log('get w AC: ', commentsArray);
     return dispatch({type: FETCH_COMMENTS__END, comments: commentsArray})
   });
 }

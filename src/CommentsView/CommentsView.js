@@ -3,21 +3,37 @@ import {connect} from 'react-redux'
 import {fetchComments} from '../state/comments/actionCreators'
 
 const mapStateToProps = (state) => ({
-  comments: state.commentsData.comments
+  comments: state.commentsData.comments,
+  places: state.placesData.places
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchDataComments: () => dispatch(fetchComments())
+  fetchDataComments: () => dispatch(fetchComments()),
+  submitComment: (comment) => dispatch({ type: 'nothing'})
 })
 
+
 class CommentsView extends React.Component {
-  // constructor() {
-  //   super()
-  // }
+  constructor() {
+    super()
+
+    this.state= {
+      title: '',
+      content: '',
+      authorName: ''
+    }
+
+    this.handleSubmit = () => {
+      this.props.submitComment({
+        ...this.state,
+        itemId: this.props.params.placeId
+      })
+    }
+  }
 
 
   componentWillMount() {
-    console.log("willmount:", this.props)
+    // console.log("willmount:", this.props)
     this.props.fetchDataComments()
   }
 
@@ -28,9 +44,14 @@ class CommentsView extends React.Component {
         <h3>Wyświetlam komentarze</h3>
         <div>
           {
-            this.props.comments.map(comment =>
+            //this.props.comments.filter(comment =>
+              //comment.itemId == this.props.places(this.props.params.placeId))
+            console.log('this props places: ', this.props.places)}
 
-              <table>
+          {this.props.comments.filter(comment =>
+            comment.itemId == this.props.places[this.props.params.placeId].id
+          ).map(comment =>
+            <table>
                 <tr key={comment.id}>
                   <td>{comment.title}</td>
                   <td>{comment.content}</td>
@@ -39,15 +60,22 @@ class CommentsView extends React.Component {
               </table>)
           }
         </div>
-
         <h3>Wprowadzam komentarze</h3>
         <p> Tytuł </p>
-        <input type="text"/>
+        <input type="text"
+               value={this.state.title}
+               onChange={(event) => this.setState({title: event.target.value})}
+        />
+        {console.log("title: ", this.state.title)}
         <p>Komentarz</p>
-        <textarea cols="30" rows="10">
+        <textarea cols="30" rows="10"
+                  value={this.state.content}
+                  onChange={(event) => this.setState({content: event.target.value})}>
 </textarea>
         <p>Podpis</p>
-        <input type="text"/>
+        <input type="text"
+               value={this.state.authorName}
+               onChange={(event) => this.setState({authorName: event.target.value})}/>/>
         <br/>
         <button type="submit">Submit</button>
 
