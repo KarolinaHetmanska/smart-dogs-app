@@ -54,6 +54,7 @@
 .search-background {
   background-image: url('../../public/img/gdansk.jpg');
   background-position-y: -340px;
+  background-size: cover;
   opacity: 0.9;
   width: 100%;
 }
@@ -105,6 +106,18 @@
 
 .glyphicon-search {
   font-size: 22px;
+}
+.filters-chosen-category,
+.filters-chosen-place{
+  margin: 10px;
+  padding:10px;
+  color: white;
+  border-radius: 2px;
+}
+
+.filters-intro{
+  margin-left: 60px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 780px) {
