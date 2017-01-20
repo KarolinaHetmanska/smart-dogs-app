@@ -41,6 +41,7 @@ class SearchEngine extends React.Component {
       const search = this.state.search.toLowerCase()
       event.preventDefault()
       if (this.state.search === '') {
+
         return
       }
 
@@ -121,33 +122,7 @@ class SearchEngine extends React.Component {
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       }
-      this.handleFilterCategory = () => {
-        this.setState({
-          eventKeyCategory: 'wszystko',
-          eventKeyCategoryName: 'Kategorie',
-          found: this.props.allEvents.filter(event => event.city === eventKeyPlace
-          ).filter(
-            event => new Date(event.date).getTime() < chosenTimeFrame)
-        })
-      }
-      this.handleFilterPlace = () => {
-        this.setState({
-          eventKeyPlace: 'Cale',
-          eventKeyPlaceName: 'Gdzie',
-          found: this.props.allEvents.filter(event => event.category === eventKeyCategory
-          ).filter(
-            event => new Date(event.date).getTime() < chosenTimeFrame)
-        })
-      }
-      this.handleFilterTime = () => {
-        this.setState({
-          eventKeyTimeName: 'Kiedy',
-          found: this.props.allEvents.filter(event => event.category === eventKeyCategory
-          ).filter(
-            event => event.city === eventKeyPlace
-          )
-        })
-      }
+
       console.log(this.state.chosenFilters)
 
       this.setState({
@@ -160,10 +135,39 @@ class SearchEngine extends React.Component {
         eventKeyTimeName: eventKeyTimeName,
 
       })
+      this.handleSubmit({preventDefault: () => {}})
+    }
+
+    this.handleFilterCategory = () => {
+      this.handleDropdownAll('Category.wszystko', { target: { innerHTML: 'Kategorie'}})
+
+
+      // this.setState({
+      //   eventKeyCategory: 'wszystko',
+      //   eventKeyCategoryName: 'Kategorie'
+      // })
+    }
+    this.handleFilterPlace = () => {
+      this.handleDropdownAll('Place.Cale', { target: { innerHTML: 'Gdzie'}})
+
+      // this.setState({
+      //   eventKeyPlace: 'Cale',
+      //   eventKeyPlaceName: 'Gdzie'
+      // })
+    }
+    this.handleFilterTime = () => {
+      this.handleDropdownAll('Time.31104000000', { target: { innerHTML: 'Kiedy'}})
+
+
+      // this.setState({
+      //   eventKeyTimeName: 'Kiedy',
+      //
+      // })
     }
   }
 
   render() {
+
     return (
       <Grid className="background-image-container" fluid>
         <Row className="search-container search-background">
@@ -263,6 +267,7 @@ class SearchEngine extends React.Component {
 
               <ul>
                 <EventsListView colWidthMd={3} colWidthSm={6}
+                                nothingness={this.state.found.length === 0}
                                 events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                                   (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
                                 ).slice(0, 8)}/>

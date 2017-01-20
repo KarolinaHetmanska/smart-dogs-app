@@ -33,6 +33,7 @@ const EventsListView = props => {
   }
   return (
     <div>
+      {props.events && props.nothingness ? <p>Najbliższe wydarzenia</p> : (props.events ? <p>Wydarzenia dla czegośtam</p> : <p>Sorry nic nie znalazłeś, sprawdź rekomendacje</p>)}
       {
         (props.events || props.allEvents).map(event =>
           <Col sm={props.colWidthSm} md={props.colWidthMd} key={event.id}>
