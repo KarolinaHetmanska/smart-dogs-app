@@ -16,8 +16,9 @@ const setup = {
   'koncert': '#f74a4a',
   'Gdańsk': '#9d9ea0',
   'Gdynia': '#9d9ea0',
-  'Sopot': '#9d9ea0',
+  'Sopot': '#9d9ea0'
 }
+
 
 class SearchEngine extends React.Component {
   constructor() {
@@ -26,9 +27,6 @@ class SearchEngine extends React.Component {
     this.state = {
       search: '',
       found: [],
-      chosenCategory: '',
-      chosenPlace: '',
-      chosenTime: '',
       phrase: "Co Ciebie interesuje?",
       eventKeyCategory: 'wszystkie',
       eventKeyPlace: 'Cale',
@@ -36,7 +34,6 @@ class SearchEngine extends React.Component {
       eventKeyCategoryName: 'Kategorie',
       eventKeyPlaceName: 'Gdzie',
       eventKeyTimeName: 'Kiedy',
-      filterText: '',
       searchMessage: 'Najbliższe wydarzenia'
     }
 
@@ -57,13 +54,14 @@ class SearchEngine extends React.Component {
       if (foundEvents.length > 0) {
         this.setState({
           found: foundEvents,
-          searchMessage: 'Najbliższe wydarzenia dla ' + "'" + search + "'",
-          filterText: 'Wybrane filtry: '
+          searchMessage: 'Najbliższe wydarzenia dla "' + search + '"',
+          chosenFilters: []
         })
       } else {
         this.setState({
           searchMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
-          found: []
+          found: [],
+          chosenFilters: []
         })
       }
     }
@@ -71,6 +69,10 @@ class SearchEngine extends React.Component {
     this.handleDropdownAll = (eventKeyValue, event) => {
       //console.log(data)
       //let eventKeyValue = 'asdfas'
+      this.setState({
+        searchMessage: 'Najbliższe wydarzenia',
+        search: ''
+      })
       const [prefix, value] = eventKeyValue.split('.')
       let {eventKeyCategory, eventKeyPlace, eventKeyTime, eventKeyCategoryName, eventKeyPlaceName, eventKeyTimeName} = this.state
 
@@ -84,39 +86,34 @@ class SearchEngine extends React.Component {
           eventKeyPlaceName = event.target.innerHTML
           break;
         case 'Time':
-          eventKeyTime = parseInt(value);
-          eventKeyTimeName = event.target.innerHTML
+          eventKeyTime = parseInt(value, 10);
+          eventKeyTimeName = event.target.innerHTML.split(' ').pop()
           break;
+        default:
+          break
       }
 
       let chosenTimeFrame = (new Date().getTime() + eventKeyTime)
-      this.setState({
-        searchMessage: 'Najbliższe wydarzenia',
-        search: ''
-      })
+
       if (eventKeyCategory === 'wszystko' && eventKeyPlace === 'Cale') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else if (eventKeyCategory === 'wszystko') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.city === eventKeyPlace
           ).filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else if (eventKeyPlace === 'Cale') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.category === eventKeyCategory
           ).filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.category === eventKeyCategory
           ).filter(
             event => event.city === eventKeyPlace
@@ -124,23 +121,34 @@ class SearchEngine extends React.Component {
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       }
-      this.handleFilterClick = (keyValue) => {
-        const [prefix] = keyValue.split(' ')
-        let {eventKeyCategory, eventKeyPlace, eventKeyTime} = this.state
-
-        switch (prefix) {
-          case 'category':
-            eventKeyCategory = 'wszystkie';
-            break;
-          case 'spektakl':
-            eventKeyPlace = 'wszystkie';
-            break;
-          case 'musical':
-            eventKeyTime = 'wszystkie';
-            break;
-        }
+      this.handleFilterCategory = () => {
+        this.setState({
+          eventKeyCategory: 'wszystko',
+          eventKeyCategoryName: 'Kategorie',
+          found: this.props.allEvents.filter(event => event.city === eventKeyPlace
+          ).filter(
+            event => new Date(event.date).getTime() < chosenTimeFrame)
+        })
       }
-
+      this.handleFilterPlace = () => {
+        this.setState({
+          eventKeyPlace: 'Cale',
+          eventKeyPlaceName: 'Gdzie',
+          found: this.props.allEvents.filter(event => event.category === eventKeyCategory
+          ).filter(
+            event => new Date(event.date).getTime() < chosenTimeFrame)
+        })
+      }
+      this.handleFilterTime = () => {
+        this.setState({
+          eventKeyTimeName: 'Kiedy',
+          found: this.props.allEvents.filter(event => event.category === eventKeyCategory
+          ).filter(
+            event => event.city === eventKeyPlace
+          )
+        })
+      }
+      console.log(this.state.chosenFilters)
 
       this.setState({
         eventKeyCategory: eventKeyCategory,
@@ -151,9 +159,6 @@ class SearchEngine extends React.Component {
         eventKeyPlaceName: eventKeyPlaceName,
         eventKeyTimeName: eventKeyTimeName,
 
-        chosenCategory: eventKeyCategory,
-        chosenPlace: eventKeyPlace,
-        chosenTime: eventKeyTime
       })
     }
   }
@@ -232,29 +237,26 @@ class SearchEngine extends React.Component {
               <div className="filters-container">
                 {
                   (this.state.eventKeyCategory !== 'wszystkie') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
-                    <div className="filters-intro">Wybrane filtry:
-                      <span key="category.filter" onClick={this.handleFilterClick} className="filters-chosen-category"
+                    <span className="filters-intro">Wybrane filtry:
+                      <span onClick={this.handleFilterCategory} className="filters-chosen-category"
                             style={{
                               backgroundColor: setup[this.state.eventKeyCategory] || '#ffffff'
                             }}>{this.state.eventKeyCategory} X</span>
-                    </div> : null
+                    </span> : null
                 }
-                <span className="filters-chosen-place"
-                      style={{
-                        backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
-                      }}
-                >{
-                  (this.state.eventKeyPlace !== 'Cale') ?
-                    this.state.eventKeyPlace : null
-                }</span>
-                <span className="filters-chosen-time"
-                      style={{
-                        backgroundColor: setup[this.state.eventKeyTimeName] === 'Kiedy' || '#ffffff'
-                      }}
-                >{
-                  (this.state.eventKeyTimeName !== 'Kiedy') && (this.state.searchMessage === false) ?
-                    this.state.eventKeyTimeName : null
-                }</span>
+                {
+                  (this.state.eventKeyPlace !== 'Cale') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                    <span onClick={this.handleFilterPlace} className="filters-chosen-place"
+                          style={{
+                            backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
+                          }}>{this.state.eventKeyPlace} X</span>
+                    : null
+                }
+                {
+                  (this.state.eventKeyTimeName !== 'Kiedy') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                    <span onClick={this.handleFilterTime} className="filters-chosen-time">{this.state.eventKeyTimeName} X</span>
+                    : null
+                }
               </div>
               <br />
               <br />

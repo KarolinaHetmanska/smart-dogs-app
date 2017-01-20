@@ -107,17 +107,36 @@
 .glyphicon-search {
   font-size: 22px;
 }
+.filters-container{
+  padding-top: 10px;
+}
 .filters-chosen-category,
-.filters-chosen-place{
+.filters-chosen-place
+{
   margin: 10px;
   padding:10px;
   color: white;
   border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.filters-chosen-time{
+  margin: 10px;
+  padding:10px;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #24b795;
 }
 
 .filters-intro{
   margin-left: 60px;
   font-size: 16px;
+}
+.search-message{
+  text-align: center;
+  font-size: 32px;
 }
 
 @media screen and (max-width: 780px) {
@@ -140,8 +159,4 @@
   .glyphicon-search {
     font-size: 14px;
   }
-}
-.search-message{
-  text-align: center;
-  font-size: 32px;
 }
