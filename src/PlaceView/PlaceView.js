@@ -38,8 +38,8 @@ const PlaceView = (props) =>
             <div>
               <Row>
               <EventsListView colWidthSm={4} colWidthMd={4}
-                              events={props.allEvents.filter(event =>
-                  props.places[props.params.placeId].events.indexOf(event.id) !== -1
+                              events = {props.allEvents.filter(event =>
+                  props.places[parseInt(props.params.placeId)-1].events.indexOf(event.id) !== -1
                 )
                 }
               />

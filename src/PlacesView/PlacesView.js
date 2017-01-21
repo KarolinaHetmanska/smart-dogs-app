@@ -14,7 +14,7 @@ const placesView = (props) =>
     {
       props.params.placeId === undefined ?
         props.places.map(place =>
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={6} key={place.id}>
             <div className="thumbnail thumbnail-places">
               <Col xs={6} md={6}>
                 <Link to={'/places/' + place.id}>

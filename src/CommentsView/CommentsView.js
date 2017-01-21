@@ -43,16 +43,12 @@ class CommentsView extends React.Component {
         <h1>Komentarze</h1>
         <h3>Wyświetlam komentarze</h3>
         <div>
-          {
-            //this.props.comments.filter(comment =>
-              //comment.itemId == this.props.places(this.props.params.placeId))
-            console.log('this props places: ', this.props.places)}
-
           {this.props.comments.filter(comment =>
-            comment.itemId == this.props.places[this.props.params.placeId].id
+          // I put "-1" because "this.props.places" is an array, and its items start with number O, but "places.json" is an object and its ids starts with 1
+            comment.itemId === this.props.places[parseInt(this.props.params.placeId)-1].id
           ).map(comment =>
-            <table>
-                <tr key={comment.id}>
+            <table key={comment.id}>
+                <tr >
                   <td>{comment.title}</td>
                   <td>{comment.content}</td>
                   <td>{comment.authorName}</td>
