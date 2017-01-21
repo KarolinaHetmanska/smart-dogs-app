@@ -39,7 +39,8 @@ const PlaceView = (props) =>
               <Row>
               <EventsListView colWidthSm={4} colWidthMd={4}
                               events = {props.allEvents.filter(event =>
-                  props.places[parseInt(props.params.placeId)-1].events.indexOf(event.id) !== -1
+                                // I put "-1" because "props.places" is an array, and its items start with number O, but "events.json" is an object and its ids starts with 1
+                              props.places[parseInt(props.params.placeId)-1].events.indexOf(event.id) !== -1
                 )
                 }
               />
