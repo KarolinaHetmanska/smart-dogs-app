@@ -29,11 +29,9 @@ class CommentsView extends React.Component {
       this.props.submitDataComment({
         ...this.state,
         itemId: this.props.params.placeId
-
       })
       //console.log("w handle submit, this.state:", this.state)
      // console.log("w handle submit, this.props:", this.props)
-
     }
   }
 

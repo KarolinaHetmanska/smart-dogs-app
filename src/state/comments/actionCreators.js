@@ -29,12 +29,12 @@ export const submitComment = () => dispatch => {
       title: "tytuł na sztywno",
       content: "tytuł na sztywno",
       authorName: "tytuł na sztywno",
-      itemId: "itemId na sztywno"
+      itemId: 1
     })
   }).then(function (response) {
     return response.json();
   }).then(function (data) {
-    console.log('post', data);
+    console.log('submitComment - POST:', data);
    dispatch({type: SUBMIT_COMMENTS__END, comments: data})
   });
 }
