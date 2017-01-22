@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 import {EventsListView} from '../EventsListView'
+import {CommentsView} from '../CommentsView'
 
 
 const mapStateToProps = (state) => ({
@@ -37,13 +38,16 @@ const PlaceView = (props) =>
             <div>
               <Row>
               <EventsListView colWidthSm={4} colWidthMd={4}
-                              events=
-                {props.allEvents.filter(event =>
-                  props.places[props.params.placeId].events.indexOf(event.id) !== -1
+                              events = {props.allEvents.filter(event =>
+                                // I put "-1" because "props.places" is an array, and its items start with number O, but "events.json" is an object and its ids starts with 1
+                              props.places[parseInt(props.params.placeId)-1].events.indexOf(event.id) !== -1
                 )
                 }
               />
               </Row>
+              <Row>
+              <CommentsView {...props} />
+                </Row>
             </div>
           </div>
         )
