@@ -28,7 +28,7 @@ class SearchEngine extends React.Component {
       search: '',
       found: [],
       phrase: "Co Ciebie interesuje?",
-      eventKeyCategory: 'wszystkie',
+      eventKeyCategory: 'wszystko',
       eventKeyPlace: 'Cale',
       eventKeyTime: 31104000000,
       eventKeyCategoryName: 'Kategorie',
