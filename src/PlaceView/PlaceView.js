@@ -4,6 +4,7 @@ import {Row, Col} from 'react-bootstrap'
 import {SingleMapView} from '../MapView'
 import {EventsListView} from '../EventsListView'
 import {CommentsView} from '../CommentsView'
+import './PlaceView.css'
 
 
 const mapStateToProps = (state) => ({
@@ -14,7 +15,6 @@ const mapStateToProps = (state) => ({
 const PlaceView = (props) =>
 
   <div>
-    <h1>One place view</h1>
     <div>
       {
         props.places.filter(place =>
@@ -22,32 +22,48 @@ const PlaceView = (props) =>
         ).map(place =>
           <div className="singleEvent-container" key={place.id}>
             <Row>
-              <Col sm={4} smOffset={2}>
-                <img className="event-img" role="presentation"
-                     src={process.env.PUBLIC_URL + '/img/places/' + place.image}/>
-              </Col>
-              <Col sm={4}>
-                <h1 className="event-name">{place.name}</h1>
+              <Col sm={12}>
+                <div className="place-main-image"
+                     style={{
+                       backgroundImage: "url(" + process.env.PUBLIC_URL +
+                       '/img/places/' + place.image + ")"
+                     }}></div>
               </Col>
             </Row>
+
+            <Row className="row place-decriptionandevents-row">
+              <Col sm={4}>
+                <h1>{place.name}</h1>
+                <h4>{place.city} </h4>
+                <h4> ul.{place.address}</h4>
+                <br/>
+                <span><a href="">WWW</a></span>
+                <br/>
+                <p><a href="#place-comments-view">Sprawdź opinie na temat tej lokalizacji</a></p>
+              </Col>
+
+              <div className="place-events-list-thumbanil">
+                <EventsListView colWidthSm={4} colWidthMd={3}
+                                events={props.allEvents.filter(event =>
+                                    // I put "-1" because "props.places" is an array, and its items start with number O, but "events.json" is an object and its ids starts with 1
+                                  props.places[parseInt(props.params.placeId) - 1].events.indexOf(event.id) !== -1
+                                )
+                                }
+                />
+              </div>
+
+            </Row>
+
             <Row>
-              <Col sm={6} smOffset={2}>
-                <SingleMapView placeOfEvent={place}/>
+              <Col sm={10} smOffset={1}>
+                <SingleMapView placeOfEvent={place} />
               </Col>
             </Row>
             <div>
-              <Row>
-              <EventsListView colWidthSm={4} colWidthMd={4}
-                              events = {props.allEvents.filter(event =>
-                                // I put "-1" because "props.places" is an array, and its items start with number O, but "events.json" is an object and its ids starts with 1
-                              props.places[parseInt(props.params.placeId)-1].events.indexOf(event.id) !== -1
-                )
-                }
-              />
+
+              <Row id="place-comments-view">
+                <CommentsView {...props} />
               </Row>
-              <Row>
-              <CommentsView {...props} />
-                </Row>
             </div>
           </div>
         )

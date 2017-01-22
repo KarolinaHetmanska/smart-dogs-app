@@ -1,0 +1,13 @@
+.place-main-image {
+  /*border-top-left-radius: 5px;*/
+  /*border-bottom-left-radius: 5px;*/
+  background-size: cover;
+  min-height: 400px;
+  background-position: center center;
+  margin-bottom: 100px;
+}
+.row.place-decriptionandevents-row {
+  margin-bottom: 100px;
+  box-sizing: content-box;
+}
+
