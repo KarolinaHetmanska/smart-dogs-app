@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchDataComments: () => dispatch(fetchComments()),
   submitDataComment: (comment) => dispatch(submitComment(comment),
-console.log('comment w mapDispatch', comment)
+//console.log('comment w mapDispatch', comment)
   )
 })
 
@@ -30,8 +30,6 @@ class CommentsView extends React.Component {
         ...this.state,
         itemId: this.props.params.placeId
       })
-      //console.log("w handle submit, this.state:", this.state)
-     // console.log("w handle submit, this.props:", this.props)
     }
   }
 
@@ -63,6 +61,7 @@ class CommentsView extends React.Component {
         <form onSubmit={(event) => {
           event.preventDefault()
           this.handleSubmit()
+          this.props.fetchDataComments()
         }}>
           <input type="text"
                  value={this.state.title}
@@ -80,10 +79,8 @@ class CommentsView extends React.Component {
           <br/>
           <button type="submit">Submit</button>
         </form>
-
       </div>
     )
-
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsView)

@@ -5,7 +5,6 @@ const initialState = {
   comments: []
 }
 
-
 export default (state = initialState, action) => {
   switch (action.type) {
 
@@ -22,7 +21,6 @@ export default (state = initialState, action) => {
         content: action.content,
         authorName: action.authorName
       }
-
 
     default:
       return state

@@ -18,24 +18,24 @@ export const fetchComments = () => dispatch => {
   });
 }
 
-export const submitComment = () => dispatch => {
-  // dispatch({type: SUBMIT_COMMENTS__BEGIN})
+export const submitComment = (comment) => dispatch => {
+  dispatch({type: SUBMIT_COMMENTS__BEGIN})
   fetch('http://localhost:3001/api/comments', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      title: "tytuł na sztywno",
-      content: "tytuł na sztywno",
-      authorName: "tytuł na sztywno",
-      itemId: 1
+      title: comment.title,
+      content: comment.content,
+      authorName: comment.authorName,
+      itemId: comment.itemId
     })
   }).then(function (response) {
     return response.json();
-  }).then(function (data) {
-    console.log('submitComment - POST:', data);
-   dispatch({type: SUBMIT_COMMENTS__END, comments: data})
+  }).then(function (dispatchedArray) {
+   // console.log('submitComment - POST:', dispatchedArray);
+   dispatch({type: SUBMIT_COMMENTS__END, comments: dispatchedArray})
   });
 }
 
