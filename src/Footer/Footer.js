@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-details">
-        <h2>wmiasto</h2>
+        <h2 className="footer-group-header">wmiasto</h2>
         <hr />
         <Link to="/events">
           <p>Wydarzenia</p>
@@ -26,7 +26,7 @@ const Footer = () => {
         </Link>
       </div>
       <div className="footer-icons">
-        <h2>social</h2>
+        <h2 className="footer-group-header">social</h2>
         <hr />
         <div className="social-icons">
           <SocialIcon className="social-icon" network="facebook" color="#fff" style={{height: 35, width: 35}}/><br/>

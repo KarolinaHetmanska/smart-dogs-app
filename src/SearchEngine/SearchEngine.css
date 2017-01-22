@@ -53,7 +53,7 @@
 
 .search-background {
   background-image: url('../../public/img/gdansk.jpg');
-  background-position-y: -340px;
+  background-position-y: -200px;
   background-size: cover;
   opacity: 0.9;
   width: 100%;
@@ -142,6 +142,9 @@
 @media screen and (max-width: 780px) {
   .search-form-wrapper {
     width: 300px;
+  }
+  .see-more-link-caption{
+   font-size: 14px;
   }
 }
 
