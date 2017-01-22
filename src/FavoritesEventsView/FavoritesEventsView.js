@@ -28,7 +28,6 @@ const FavoritesEventsView = props => {
       <Grid>
         <Col xs={6}>
           <div className="favorite-thumbnails">
-            <h1>Twoje ulubione wydarzenia</h1>
             <br />
             <div className="fav--shift-left">
               <EventsListView colWidthMd={6} events={eventsToDisplay}/>

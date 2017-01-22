@@ -34,14 +34,13 @@ class SearchEngine extends React.Component {
       eventKeyCategoryName: 'Kategorie',
       eventKeyPlaceName: 'Gdzie',
       eventKeyTimeName: 'Kiedy',
-      searchMessage: 'Najbliższe wydarzenia'
+      errorMessage: false
     }
 
     this.handleSubmit = (event) => {
       const search = this.state.search.toLowerCase()
       event.preventDefault()
       if (this.state.search === '') {
-
         return
       }
 
@@ -55,23 +54,22 @@ class SearchEngine extends React.Component {
       if (foundEvents.length > 0) {
         this.setState({
           found: foundEvents,
-          searchMessage: 'Najbliższe wydarzenia dla "' + search + '"',
-          chosenFilters: []
+          errorMessage: false
         })
       } else {
         this.setState({
-          searchMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
-          found: [],
-          chosenFilters: []
+          errorMessage: true,
+          found: []
         })
       }
     }
+
 
     this.handleDropdownAll = (eventKeyValue, event) => {
       //console.log(data)
       //let eventKeyValue = 'asdfas'
       this.setState({
-        searchMessage: 'Najbliższe wydarzenia',
+        errorMessage: false,
         search: ''
       })
       const [prefix, value] = eventKeyValue.split('.')
@@ -123,7 +121,6 @@ class SearchEngine extends React.Component {
         })
       }
 
-      console.log(this.state.chosenFilters)
 
       this.setState({
         eventKeyCategory: eventKeyCategory,
@@ -141,28 +138,14 @@ class SearchEngine extends React.Component {
     this.handleFilterCategory = () => {
       this.handleDropdownAll('Category.wszystko', { target: { innerHTML: 'Kategorie'}})
 
-
-      // this.setState({
-      //   eventKeyCategory: 'wszystko',
-      //   eventKeyCategoryName: 'Kategorie'
-      // })
     }
     this.handleFilterPlace = () => {
       this.handleDropdownAll('Place.Cale', { target: { innerHTML: 'Gdzie'}})
 
-      // this.setState({
-      //   eventKeyPlace: 'Cale',
-      //   eventKeyPlaceName: 'Gdzie'
-      // })
     }
     this.handleFilterTime = () => {
       this.handleDropdownAll('Time.31104000000', { target: { innerHTML: 'Kiedy'}})
 
-
-      // this.setState({
-      //   eventKeyTimeName: 'Kiedy',
-      //
-      // })
     }
   }
 
@@ -237,10 +220,10 @@ class SearchEngine extends React.Component {
         <Grid>
           <Row>
             <Col className="shift-left">
-              <h3 className="search-message"> {this.state.searchMessage} </h3>
+              <h3 className="error-message"> {this.state.errorMessage === true && this.state.search !== '' ? "Nie znaleziono wyników dla '" + this.state.search + "' ale sprawdź wydarzenia, które rekomendujemy" : null} </h3>
               <div className="filters-container">
                 {
-                  (this.state.eventKeyCategory !== 'wszystkie') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                  (this.state.eventKeyCategory !== 'wszystkie') ?
                     <span className="filters-intro">Wybrane filtry:
                       <span onClick={this.handleFilterCategory} className="filters-chosen-category"
                             style={{
@@ -249,7 +232,7 @@ class SearchEngine extends React.Component {
                     </span> : null
                 }
                 {
-                  (this.state.eventKeyPlace !== 'Cale') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                  (this.state.eventKeyPlace !== 'Cale') ?
                     <span onClick={this.handleFilterPlace} className="filters-chosen-place"
                           style={{
                             backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
@@ -257,7 +240,7 @@ class SearchEngine extends React.Component {
                     : null
                 }
                 {
-                  (this.state.eventKeyTimeName !== 'Kiedy') && (this.state.searchMessage === 'Najbliższe wydarzenia') ?
+                  (this.state.eventKeyTimeName !== 'Kiedy') ?
                     <span onClick={this.handleFilterTime} className="filters-chosen-time">{this.state.eventKeyTimeName} X</span>
                     : null
                 }
@@ -267,7 +250,8 @@ class SearchEngine extends React.Component {
 
               <ul>
                 <EventsListView colWidthMd={3} colWidthSm={6}
-                                nothingness={this.state.found.length === 0}
+                                eventsFound={this.state.found}
+                                search={this.state.search}
                                 events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
                                   (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
                                 ).slice(0, 8)}/>
