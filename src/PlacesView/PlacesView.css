@@ -36,8 +36,8 @@
   margin-top: 20px;
   padding: 10px;
   border-radius: 2px;
-  border: 2px solid darkgrey;
-  color: grey;
+  border: 2px solid #fd5d1d;
+  color: black;
   font-family: Roboto, sans-serif;
   position: absolute;
   bottom: 20px;
@@ -45,6 +45,6 @@
 }
 
 .thumbnail-details-button:hover {
-  border: 2px solid lightgrey;
-  color: lightgray;
+  border: 2px solid lightsalmon;
+  color: darkgray;
 }
