@@ -38,7 +38,7 @@ const MultiMapView = (props) => {
       <br/>
       <div className="map-container" style={{width: props.mapWidth}}>
         <GoogleMap
-          bootstrapURLKeys={{key: "AIzaSyBNloCLIiE_DmpryAJU16mwcr46EyQu2Fg"}}
+          bootstrapURLKeys={{key: "AIzaSyDoOS8IgP3NxfUAsz87d0enlpmF8hzNMn8"}}
           center={{
             lat: centerLat || 54.430,
             lng: centerLng || 18.595
