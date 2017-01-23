@@ -19,6 +19,9 @@ const MultiMapView = (props) => {
         place.events.indexOf(event.id) !== -1
       )
   )
+
+
+
   const centerLat = placesOfEvents.map(
       place => {
         return place.lat
