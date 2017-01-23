@@ -30,6 +30,11 @@ class CommentsView extends React.Component {
         ...this.state,
         itemId: this.props.params.placeId
       })
+      this.setState({
+        title: '',
+        content: '',
+        authorName: ''
+      })
     }
   }
 
