@@ -20,6 +20,7 @@ const MultiMapView = (props) => {
       )
   )
 
+
   const centerLat = placesOfEvents.map(
       place => {
         return place.lat
