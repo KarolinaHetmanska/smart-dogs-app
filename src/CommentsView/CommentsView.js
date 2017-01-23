@@ -40,39 +40,40 @@ class CommentsView extends React.Component {
   render() {
     return (
       <div>
-        <h1>Opinie</h1>
         <div>
           {this.props.comments.filter(comment =>
               // I put "-1" because "this.props.places" is an array, and its items start with number O, but "places.json" is an object and its ids starts with 1
             comment.itemId === this.props.places[parseInt(this.props.params.placeId) - 1].id
           ).map(comment =>
-            <table key={comment.id} className="comment-displaying">
-              <th>
-                <td>{comment.title}</td>
-              </th>
-              <tr>
-                <td>{comment.content}</td>
-              </tr>
-              <tr>
-                <td>{comment.authorName}</td>
-                <td>{comment.createdAt}</td>
-              </tr>
-            </table>
+            <div className="comments-displaying">
+              <table key={comment.id}>
+                <th>
+                  <td><h4><b>{comment.title}</b></h4></td>
+                </th>
+                <tr>
+                  <td className="comments-table-content">{comment.content}</td>
+                </tr>
+                <tr>
+                  <td><b>Autor:</b> {comment.authorName}</td>
+                </tr>
+              </table>
+            </div>
           )
           }
         </div>
-        <h3>Wprowadzam komentarze</h3>
+        <h3 className="comments-add-header">Dodaj opinię</h3>
         <p> Tytuł </p>
-        <form onSubmit={(event) => {
-          event.preventDefault()
-          this.handleSubmit()
-          this.props.fetchDataComments()
-        }}>
+        <form className="comments-inputs"
+              onSubmit={(event) => {
+                event.preventDefault()
+                this.handleSubmit()
+                this.props.fetchDataComments()
+              }}>
           <input type="text"
                  value={this.state.title}
                  onChange={(event) => this.setState({title: event.target.value})}
           />
-          <p>Komentarz</p>
+          <p>Treść komentarza</p>
           <textarea cols="60" rows="7"
                     value={this.state.content}
                     onChange={(event) => this.setState({content: event.target.value})}>
