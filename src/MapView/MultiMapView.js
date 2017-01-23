@@ -9,6 +9,7 @@ const mapSateToProps = (state) => ({
   places: state.placesData.places
 })
 
+
 const MultiMapView = (props) => {
 
   const placesOfEvents = props.places.filter(
