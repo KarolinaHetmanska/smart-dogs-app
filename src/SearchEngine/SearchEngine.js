@@ -16,8 +16,9 @@ const setup = {
   'koncert': '#f74a4a',
   'Gdańsk': '#9d9ea0',
   'Gdynia': '#9d9ea0',
-  'Sopot': '#9d9ea0',
+  'Sopot': '#9d9ea0'
 }
+
 
 class SearchEngine extends React.Component {
   constructor() {
@@ -26,9 +27,6 @@ class SearchEngine extends React.Component {
     this.state = {
       search: '',
       found: [],
-      chosenCategory: '',
-      chosenPlace: '',
-      chosenTime: '',
       phrase: "Co Ciebie interesuje?",
       eventKeyCategory: 'wszystko',
       eventKeyPlace: 'Cale',
@@ -36,7 +34,7 @@ class SearchEngine extends React.Component {
       eventKeyCategoryName: 'Kategorie',
       eventKeyPlaceName: 'Gdzie',
       eventKeyTimeName: 'Kiedy',
-      filterText: ''
+      errorMessage: false
     }
 
     this.handleSubmit = (event) => {
@@ -56,20 +54,24 @@ class SearchEngine extends React.Component {
       if (foundEvents.length > 0) {
         this.setState({
           found: foundEvents,
-          errorMessage: false,
-          filterText: 'Wybrane filtry: '
+          errorMessage: false
         })
       } else {
         this.setState({
-          errorMessage: "Nie znaleziono wyników dla '" + search + "' ale sprawdź wydarzenia, które rekomendujemy:",
+          errorMessage: true,
           found: []
         })
       }
     }
 
+
     this.handleDropdownAll = (eventKeyValue, event) => {
       //console.log(data)
       //let eventKeyValue = 'asdfas'
+      this.setState({
+        errorMessage: false,
+        search: ''
+      })
       const [prefix, value] = eventKeyValue.split('.')
       let {eventKeyCategory, eventKeyPlace, eventKeyTime, eventKeyCategoryName, eventKeyPlaceName, eventKeyTimeName} = this.state
 
@@ -83,61 +85,40 @@ class SearchEngine extends React.Component {
           eventKeyPlaceName = event.target.innerHTML
           break;
         case 'Time':
-          eventKeyTime = parseInt(value);
-          eventKeyTimeName = event.target.innerHTML
+          eventKeyTime = parseInt(value, 10);
+          eventKeyTimeName = event.target.innerHTML.split(' ').pop()
           break;
+        default:
+          break
       }
 
       let chosenTimeFrame = (new Date().getTime() + eventKeyTime)
-      this.setState({
-        errorMessage: false,
-        search: ''
-      })
+
       if (eventKeyCategory === 'wszystko' && eventKeyPlace === 'Cale') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else if (eventKeyCategory === 'wszystko') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.city === eventKeyPlace
           ).filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else if (eventKeyPlace === 'Cale') {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.category === eventKeyCategory
           ).filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
       } else {
         this.setState({
-          filterText: 'Wybrane filtry: ',
           found: this.props.allEvents.filter(event => event.category === eventKeyCategory
           ).filter(
             event => event.city === eventKeyPlace
           ).filter(
             event => new Date(event.date).getTime() < chosenTimeFrame)
         })
-      }
-      this.handleFilterClick = (keyValue) => {
-        const [prefix] = keyValue.split(' ')
-        let {eventKeyCategory, eventKeyPlace, eventKeyTime} = this.state
-
-        switch (prefix) {
-          case 'category':
-            eventKeyCategory = 'wszystkie';
-            break;
-          case 'spektakl':
-            eventKeyPlace = 'wszystkie';
-            break;
-          case 'musical':
-            eventKeyTime = 'wszystkie';
-            break;
-        }
       }
 
 
@@ -150,14 +131,26 @@ class SearchEngine extends React.Component {
         eventKeyPlaceName: eventKeyPlaceName,
         eventKeyTimeName: eventKeyTimeName,
 
-        chosenCategory: eventKeyCategory,
-        chosenPlace: eventKeyPlace,
-        chosenTime: eventKeyTime
       })
+      this.handleSubmit({preventDefault: () => {}})
+    }
+
+    this.handleFilterCategory = () => {
+      this.handleDropdownAll('Category.wszystko', { target: { innerHTML: 'Kategorie'}})
+
+    }
+    this.handleFilterPlace = () => {
+      this.handleDropdownAll('Place.Cale', { target: { innerHTML: 'Gdzie'}})
+
+    }
+    this.handleFilterTime = () => {
+      this.handleDropdownAll('Time.31104000000', { target: { innerHTML: 'Kiedy'}})
+
     }
   }
 
   render() {
+
     return (
       <Grid className="background-image-container" fluid>
         <Row className="search-container search-background">
@@ -227,51 +220,41 @@ class SearchEngine extends React.Component {
         <Grid>
           <Row>
             <Col className="shift-left">
-              <h3
-                className="error-message">&#xA0;{
-                (this.state.found.length !== 0) && (this.state.search !== '') ?
-                'Najbliższe wydarzenia: ' + '"' + this.state.search + '"' : this.state.errorMessage
-              }
-              </h3>
+              <h3 className="error-message"> {this.state.errorMessage === true && this.state.search !== '' ? "Nie znaleziono wyników dla '" + this.state.search + "' ale sprawdź wydarzenia, które rekomendujemy" : null} </h3>
               <div className="filters-container">
-                <span
-                  className="filters-intro">{((this.state.eventKeyCategory !== 'wszystkie') ||
-                (this.state.eventKeyPlace !== 'Cale')) &&
-                (this.state.errorMessage === false)
-                  ? this.state.filterText : null}</span>
-                <span key="category.filter" onClick={this.handleFilterClick} className="filters-chosen-category"
-                      style={{
-                        backgroundColor: setup[this.state.eventKeyCategory] || '#ffffff'
-                      }}>
-                  {
-                    (this.state.eventKeyCategory !== 'wszystkie') && (this.state.errorMessage === false) ?
-                    this.state.eventKeyCategory  : null
-                  }</span>
-                <span className="filters-chosen-place"
-                              style={{
-                                backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
-                              }}
-              >{
-                (this.state.eventKeyPlace !== 'Cale') && (this.state.errorMessage === false) ?
-                  this.state.eventKeyPlace  : null
-              }</span>
-                <span className="filters-chosen-time"
-                      style={{
-                        backgroundColor: setup[this.state.eventKeyTimeName] === 'Kiedy' || '#ffffff'
-                      }}
-                >{
-                  (this.state.eventKeyTimeName!== 'Kiedy') && (this.state.errorMessage === false) ?
-                    this.state.eventKeyTimeName : null
-                }</span>
+                {
+                  (this.state.eventKeyCategory !== 'wszystkie') ?
+                    <span className="filters-intro">Wybrane filtry:
+                      <span onClick={this.handleFilterCategory} className="filters-chosen-category"
+                            style={{
+                              backgroundColor: setup[this.state.eventKeyCategory] || '#ffffff'
+                            }}>{this.state.eventKeyCategory} X</span>
+                    </span> : null
+                }
+                {
+                  (this.state.eventKeyPlace !== 'Cale') ?
+                    <span onClick={this.handleFilterPlace} className="filters-chosen-place"
+                          style={{
+                            backgroundColor: setup[this.state.eventKeyPlace] || '#ffffff'
+                          }}>{this.state.eventKeyPlace} X</span>
+                    : null
+                }
+                {
+                  (this.state.eventKeyTimeName !== 'Kiedy') ?
+                    <span onClick={this.handleFilterTime} className="filters-chosen-time">{this.state.eventKeyTimeName} X</span>
+                    : null
+                }
               </div>
               <br />
               <br />
 
               <ul>
                 <EventsListView colWidthMd={3} colWidthSm={6}
-                                  events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
-                  (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
-                ).slice(0, 8)}/>
+                                eventsFound={this.state.found}
+                                search={this.state.search}
+                                events={this.state.found.length !== 0 ? this.state.found : this.props.allEvents.sort(
+                                  (a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime()
+                                ).slice(0, 8)}/>
 
               </ul>
             </Col>

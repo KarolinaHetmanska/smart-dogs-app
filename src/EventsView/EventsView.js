@@ -6,9 +6,9 @@ export default (props) => {
   return (
     <Grid>
       <div>
-        <h1>Lista wydarzeń</h1>
+        <h1>Lista nadchodzących wydarzeń</h1>
         <br />
-        <EventsListView colWidthMd={3}/>
+        <EventsListView colWidthMd={3} doNotShowHeader={true}/>
       </div>
       {props.children}
     </Grid>

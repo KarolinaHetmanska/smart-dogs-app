@@ -33,6 +33,7 @@ const fetchAllTheThings = () => {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
+
       <Route path="/" component={App} onEnter={fetchAllTheThings}>
         <IndexRoute component={SearchEngine} />
 

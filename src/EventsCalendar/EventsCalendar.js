@@ -39,13 +39,18 @@ const EventsCalendar = props => {
 
   return (
     <div>
-      <h1>Zaplanowane wydarzenia</h1>
       <div style={{height: 400}}>
 
         <BigCalendar
           events={eventsToDisplayInCalendar}
           startAccessor={eventsToDisplayInCalendar.start}
           endAccessor={eventsToDisplayInCalendar.end}
+          messages={{
+            today: 'Bieżący miesiąc',
+            previous: '<',
+            next: '>',
+          }}
+          views={['month']}
         />
       </div>
     </div>

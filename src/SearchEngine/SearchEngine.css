@@ -53,7 +53,7 @@
 
 .search-background {
   background-image: url('../../public/img/gdansk.jpg');
-  background-position-y: -340px;
+  background-position-y: -200px;
   background-size: cover;
   opacity: 0.9;
   width: 100%;
@@ -107,22 +107,49 @@
 .glyphicon-search {
   font-size: 22px;
 }
+.filters-container{
+  padding-top: 10px;
+}
 .filters-chosen-category,
-.filters-chosen-place{
+.filters-chosen-place
+{
   margin: 10px;
   padding:10px;
   color: white;
   border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.filters-chosen-time{
+  margin: 10px;
+  padding:10px;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #24b795;
 }
 
 .filters-intro{
   margin-left: 60px;
   font-size: 16px;
 }
+.error-message{
+  text-align: center;
+  font-size: 16px;
+}
+.events-header{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
 
 @media screen and (max-width: 780px) {
   .search-form-wrapper {
     width: 300px;
+  }
+  .see-more-link-caption{
+   font-size: 14px;
   }
 }
 
