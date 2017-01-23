@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchComments, submitComment} from '../state/comments/actionCreators'
-
+import './CommentsView.css'
 
 const mapStateToProps = (state) => ({
   comments: state.commentsData.comments,
@@ -40,35 +40,41 @@ class CommentsView extends React.Component {
   render() {
     return (
       <div>
-        <h1>Komentarze</h1>
-        <h3>Wyświetlam komentarze</h3>
         <div>
           {this.props.comments.filter(comment =>
               // I put "-1" because "this.props.places" is an array, and its items start with number O, but "places.json" is an object and its ids starts with 1
             comment.itemId === this.props.places[parseInt(this.props.params.placeId) - 1].id
           ).map(comment =>
-            <table key={comment.id}>
-              <tr >
-                <td>{comment.title}</td>
-                <td>{comment.content}</td>
-                <td>{comment.authorName}</td>
-              </tr>
-            </table>)
+            <div className="comments-displaying">
+              <table key={comment.id}>
+                <th>
+                  <td><h4><b>{comment.title}</b></h4></td>
+                </th>
+                <tr>
+                  <td className="comments-table-content">{comment.content}</td>
+                </tr>
+                <tr>
+                  <td><b>Autor:</b> {comment.authorName}</td>
+                </tr>
+              </table>
+            </div>
+          )
           }
         </div>
-        <h3>Wprowadzam komentarze</h3>
+        <h3 className="comments-add-header">Dodaj opinię</h3>
         <p> Tytuł </p>
-        <form onSubmit={(event) => {
-          event.preventDefault()
-          this.handleSubmit()
-          this.props.fetchDataComments()
-        }}>
+        <form className="comments-inputs"
+              onSubmit={(event) => {
+                event.preventDefault()
+                this.handleSubmit()
+                this.props.fetchDataComments()
+              }}>
           <input type="text"
                  value={this.state.title}
                  onChange={(event) => this.setState({title: event.target.value})}
           />
-          <p>Komentarz</p>
-          <textarea cols="30" rows="10"
+          <p>Treść komentarza</p>
+          <textarea cols="60" rows="7"
                     value={this.state.content}
                     onChange={(event) => this.setState({content: event.target.value})}>
 </textarea>
@@ -77,7 +83,7 @@ class CommentsView extends React.Component {
                  value={this.state.authorName}
                  onChange={(event) => this.setState({authorName: event.target.value})}/>
           <br/>
-          <button type="submit">Submit</button>
+          <button type="submit">Dodaj opinię</button>
         </form>
       </div>
     )
